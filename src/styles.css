@@ -138,7 +138,7 @@
 
 @keyframes pulse-dot {
   0%, 100% { opacity: 1; transform: scale(1); }
-  50% { opacity: 0.55; transform: scale(1.4); }
+  50% { opacity: 0.35; transform: scale(1.7); }
 }
 @keyframes slide-up {
   from { opacity: 0; transform: translateY(20px); }
@@ -153,7 +153,7 @@
   100% { background-position: 200% 0; }
 }
 
-@utility animate-pulse-dot { animation: pulse-dot 1.8s ease-in-out infinite; }
+@utility animate-pulse-dot { animation: pulse-dot 0.9s ease-in-out infinite; }
 @utility animate-slide-up { animation: slide-up 0.7s ease-out both; }
 @utility animate-float-slow { animation: float-slow 6s ease-in-out infinite; }
 
