@@ -307,7 +307,7 @@ function Hero() {
 function Awards() {
   const months = ["Июль", "Август", "Сентябрь", "Октябрь", "Ноябрь", "Декабрь"];
   return (
-    <section id="awards" className="relative py-16 sm:py-20">
+    <section id="awards" className="relative py-12 sm:py-16">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center">
         <SectionEyebrow icon={<Trophy className="h-3.5 w-3.5" />}>Награды</SectionEyebrow>
         <h2 className="mt-3 font-display font-bold text-3xl sm:text-5xl">Призовой фонд</h2>
@@ -317,7 +317,7 @@ function Awards() {
           <div className="relative grid lg:grid-cols-2 gap-8 items-center">
             <div className="text-center lg:text-left">
               <div className="text-sm text-muted-foreground">Общий призовой фонд</div>
-              <div className="mt-2 font-display font-extrabold text-5xl sm:text-7xl lg:text-[6.5rem] tracking-tight text-gradient-gold leading-none whitespace-nowrap">
+              <div className="mt-2 font-display font-extrabold text-[2.5rem] sm:text-7xl lg:text-[6.5rem] tracking-tight text-gradient-gold leading-none whitespace-nowrap">
                 5&nbsp;400&nbsp;000&nbsp;₽
               </div>
               <div className="mt-3 text-sm sm:text-base text-muted-foreground">
