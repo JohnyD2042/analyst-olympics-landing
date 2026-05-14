@@ -526,7 +526,7 @@ function Participation() {
       icon: <Building2 className="h-6 w-6" />,
       tag: "Институционалы",
       title: "Профессиональные аналитики",
-      text: "Сотрудники брокеров, управляющих компаний, банков и инвестиционных домов.",
+      text: "",
       bullets: [
         "Брокерские компании",
         "Управляющие компании",
@@ -599,9 +599,11 @@ function Participation() {
                     </span>
                   </div>
                   <h3 className="mt-6 font-display font-bold text-2xl">{c.title}</h3>
-                  <p className="mt-2.5 text-sm sm:text-[15px] text-muted-foreground leading-relaxed">
-                    {c.text}
-                  </p>
+                  {c.text && (
+                    <p className="mt-2.5 text-sm sm:text-[15px] text-muted-foreground leading-relaxed">
+                      {c.text}
+                    </p>
+                  )}
                   <ul className="mt-5 space-y-2.5 pt-5 border-t border-border">
                     {c.bullets.map((b) => (
                       <li key={b} className="flex items-center gap-2.5 text-sm">
