@@ -704,7 +704,7 @@ function Faq() {
     setOpen((prev) => (prev.includes(i) ? prev.filter((x) => x !== i) : [...prev, i]));
 
   return (
-    <section id="faq" className="py-16 sm:py-20">
+    <section id="faq" className="py-12 sm:py-16">
       <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 text-center">
         <SectionEyebrow icon={<Sparkles className="h-3.5 w-3.5" />}>FAQ</SectionEyebrow>
         <h2 className="mt-3 font-display font-bold text-3xl sm:text-5xl">
@@ -769,7 +769,7 @@ const applicationSchema = z.object({
 
 function Apply() {
   return (
-    <section id="apply" className="py-16 sm:py-20 scroll-mt-24">
+    <section id="apply" className="py-12 sm:py-16 scroll-mt-24">
       <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 text-center">
         <SectionEyebrow icon={<Sparkles className="h-3.5 w-3.5" />}>Заявка</SectionEyebrow>
         <h2 className="mt-3 font-display font-bold text-3xl sm:text-5xl">
