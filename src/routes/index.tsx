@@ -62,9 +62,7 @@ const MOEX_URL = "https://www.moex.com";
 function scrollToId(id: string) {
   const el = document.getElementById(id);
   if (!el) return;
-  const offset = 72;
-  const top = el.getBoundingClientRect().top + window.scrollY - offset;
-  window.scrollTo({ top, behavior: "smooth" });
+  el.scrollIntoView({ behavior: "smooth", block: "start" });
 }
 
 function LandingPage() {
@@ -306,7 +304,6 @@ function Awards() {
           <div className="absolute -top-24 -right-24 h-72 w-72 rounded-full bg-gradient-gold opacity-20 blur-3xl" />
           <div className="relative grid lg:grid-cols-2 gap-8 items-center">
             <div className="text-center lg:text-left">
-              <div className="text-sm text-muted-foreground">Общий призовой фонд</div>
               <div className="mt-2 font-display font-extrabold tracking-tight text-gradient-gold leading-none whitespace-nowrap text-[clamp(2rem,11vw,6rem)]">
                 5&nbsp;400&nbsp;000&nbsp;₽
               </div>
