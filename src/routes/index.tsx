@@ -227,7 +227,7 @@ function Hero() {
   return (
     <section
       id="about"
-      className="relative pt-32 pb-16 sm:pt-40 sm:pb-24 overflow-hidden bg-gradient-hero"
+      className="relative pt-28 pb-12 sm:pt-36 sm:pb-20 overflow-hidden bg-gradient-hero"
     >
       <div className="absolute inset-0 bg-grid opacity-60 [mask-image:radial-gradient(ellipse_at_center,black,transparent_70%)]" />
 
@@ -241,7 +241,7 @@ function Hero() {
         </div>
 
         <h1
-          className="mt-6 mx-auto max-w-4xl font-display font-extrabold leading-[1.05] tracking-tight text-4xl sm:text-6xl lg:text-7xl animate-slide-up"
+          className="mt-6 mx-auto max-w-4xl font-display font-extrabold leading-[1.05] tracking-tight text-[2rem] sm:text-6xl lg:text-7xl animate-slide-up"
           style={{ animationDelay: "60ms" }}
         >
           Сделаем <span className="text-gradient-primary">финансовую аналитику</span>{" "}
@@ -249,7 +249,7 @@ function Hero() {
         </h1>
 
         <p
-          className="mt-6 mx-auto max-w-2xl text-lg sm:text-xl text-muted-foreground animate-slide-up"
+          className="mt-5 mx-auto max-w-2xl text-base sm:text-xl text-muted-foreground animate-slide-up"
           style={{ animationDelay: "120ms" }}
         >
           Открытый конкурс аналитики по российскому фондовому рынку.
