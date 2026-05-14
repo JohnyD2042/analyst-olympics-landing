@@ -425,7 +425,7 @@ function NominationCard({
           {description}
         </p>
         <div className="mt-5 pt-4 border-t border-border text-xs text-muted-foreground">
-          Серебро и бронза — медали в рейтинге, идущие в общий зачёт, признание и статус.
+          Серебро и бронза — медали, влияющие на общий зачёт, позицию в рейтинге, признание.
         </div>
       </div>
     </div>
@@ -533,7 +533,7 @@ function Participation() {
     {
       icon: <Palmtree className="h-6 w-6" />,
       tag: "Инфлюенсеры",
-      title: "Независимые инфлюенсеры",
+      title: "Независимые авторы",
       text: "",
       bullets: [
         "Telegram-каналы и блоги",
@@ -744,7 +744,7 @@ const applicationSchema = z.object({
     .trim()
     .min(1, { message: "Введите ваше имя" })
     .max(200, { message: "Имя слишком длинное" }),
-  status: z.enum(["Частный аналитик", "Профучастник"], {
+  status: z.enum(["Профучастник", "Частный аналитик"], {
     errorMap: () => ({ message: "Выберите статус" }),
   }),
   link: z
@@ -778,7 +778,7 @@ function Apply() {
 
 function ApplyForm() {
   const [name, setName] = useState("");
-  const [status, setStatus] = useState<"" | "Частный аналитик" | "Профучастник">("");
+  const [status, setStatus] = useState<"" | "Профучастник" | "Частный аналитик">("");
   const [link, setLink] = useState("");
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [submitting, setSubmitting] = useState(false);
@@ -833,14 +833,14 @@ function ApplyForm() {
     );
   }
 
-  const statusOptions: Array<"Частный аналитик" | "Профучастник"> = [
-    "Частный аналитик",
+  const statusOptions: Array<"Профучастник" | "Частный аналитик"> = [
     "Профучастник",
+    "Частный аналитик",
   ];
 
   return (
     <form ref={formRef} onSubmit={onSubmit} className="space-y-5" noValidate>
-      <Field id="name" label="Ваше имя" error={errors.name}>
+      <Field id="name" label="Ваше имя / Бренд" error={errors.name}>
         <input
           id="name"
           type="text"
@@ -1009,11 +1009,6 @@ function Footer() {
               </li>
               <li>
                 <a href="#" className="text-foreground/80 hover:text-foreground transition-colors">
-                  Документация
-                </a>
-              </li>
-              <li>
-                <a href="#" className="text-foreground/80 hover:text-foreground transition-colors">
                   Политика обработки персональных данных
                 </a>
               </li>
@@ -1021,9 +1016,8 @@ function Footer() {
           </div>
         </div>
 
-        <div className="mt-12 pt-6 border-t border-border flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-xs text-muted-foreground">
-          <div>© 2026 Олимпиада аналитиков. Все права защищены.</div>
-          <div>Invest-idei.ru × ПАО Московская Биржа</div>
+        <div className="mt-12 pt-6 border-t border-border text-xs text-muted-foreground">
+          <div>© 2026 Invest-idei.ru. Все права защищены.</div>
         </div>
       </div>
     </footer>
