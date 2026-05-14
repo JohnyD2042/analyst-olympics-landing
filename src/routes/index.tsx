@@ -110,15 +110,11 @@ function ExamplesButton({
       href={EXAMPLES_URL}
       target="_blank"
       rel="noreferrer noopener"
-      className={`group relative inline-flex items-center justify-center gap-2 ${sizeCls} rounded-xl font-semibold text-foreground overflow-hidden transition ${className}`}
+      className={`group inline-flex items-center justify-center gap-2 ${sizeCls} rounded-xl font-semibold bg-[oklch(0.13_0.02_260)] text-[oklch(0.85_0.14_85)] border border-[oklch(0.85_0.14_85)]/40 hover:border-[oklch(0.85_0.14_85)] hover:bg-[oklch(0.16_0.025_260)] transition-colors ${className}`}
     >
-      <span className="absolute inset-0 rounded-xl p-[1.5px] bg-gradient-gold opacity-90 group-hover:opacity-100 transition" />
-      <span className="absolute inset-[1.5px] rounded-[10px] bg-background/95 group-hover:bg-background transition" />
-      <span className="relative flex items-center gap-2">
-        <Sparkles className="h-4 w-4 text-[oklch(0.85_0.14_85)]" />
-        <span className="text-gradient-gold">Примеры идей</span>
-        <ExternalLink className="h-3.5 w-3.5 text-[oklch(0.85_0.14_85)] transition-transform group-hover:translate-x-0.5" />
-      </span>
+      <Sparkles className="h-4 w-4" />
+      <span>Примеры идей</span>
+      <ExternalLink className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" />
     </a>
   );
 }
