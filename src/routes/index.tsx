@@ -842,7 +842,7 @@ function ApplyForm() {
           type="text"
           value={name}
           onChange={(e) => setName(e.target.value)}
-          placeholder="Иван Иванов"
+          placeholder="Федор Баффет"
           className="w-full h-12 px-4 rounded-lg bg-background border border-border text-foreground placeholder:text-muted-foreground/60 focus:outline-none focus:ring-2 focus:ring-ring focus:border-transparent transition"
           aria-invalid={!!errors.name}
           required
