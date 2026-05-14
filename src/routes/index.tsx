@@ -12,10 +12,6 @@ import {
   Crown,
   Building2,
   PenLine,
-  Link2,
-  Settings2,
-  Infinity as InfinityIcon,
-  BarChart3,
   ShieldCheck,
   Megaphone,
   Sparkles,
@@ -110,15 +106,11 @@ function ExamplesButton({
       href={EXAMPLES_URL}
       target="_blank"
       rel="noreferrer noopener"
-      className={`group relative inline-flex items-center justify-center gap-2 ${sizeCls} rounded-xl font-semibold text-foreground overflow-hidden transition ${className}`}
+      className={`group inline-flex items-center justify-center gap-2 ${sizeCls} rounded-xl font-semibold bg-[oklch(0.13_0.02_260)] text-[oklch(0.85_0.14_85)] border border-[oklch(0.85_0.14_85)]/40 hover:border-[oklch(0.85_0.14_85)] hover:bg-[oklch(0.16_0.025_260)] transition-colors ${className}`}
     >
-      <span className="absolute inset-0 rounded-xl p-[1.5px] bg-gradient-gold opacity-90 group-hover:opacity-100 transition" />
-      <span className="absolute inset-[1.5px] rounded-[10px] bg-background/95 group-hover:bg-background transition" />
-      <span className="relative flex items-center gap-2">
-        <Sparkles className="h-4 w-4 text-[oklch(0.85_0.14_85)]" />
-        <span className="text-gradient-gold">Примеры идей</span>
-        <ExternalLink className="h-3.5 w-3.5 text-[oklch(0.85_0.14_85)] transition-transform group-hover:translate-x-0.5" />
-      </span>
+      <Sparkles className="h-4 w-4" />
+      <span>Примеры идей</span>
+      <ExternalLink className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" />
     </a>
   );
 }
@@ -231,7 +223,7 @@ function Hero() {
   return (
     <section
       id="about"
-      className="relative pt-32 pb-16 sm:pt-40 sm:pb-24 overflow-hidden bg-gradient-hero"
+      className="relative pt-28 pb-12 sm:pt-36 sm:pb-20 overflow-hidden bg-gradient-hero"
     >
       <div className="absolute inset-0 bg-grid opacity-60 [mask-image:radial-gradient(ellipse_at_center,black,transparent_70%)]" />
 
@@ -245,7 +237,7 @@ function Hero() {
         </div>
 
         <h1
-          className="mt-6 mx-auto max-w-4xl font-display font-extrabold leading-[1.05] tracking-tight text-4xl sm:text-6xl lg:text-7xl animate-slide-up"
+          className="mt-6 mx-auto max-w-4xl font-display font-extrabold leading-[1.05] tracking-tight text-[2rem] sm:text-6xl lg:text-7xl animate-slide-up"
           style={{ animationDelay: "60ms" }}
         >
           Сделаем <span className="text-gradient-primary">финансовую аналитику</span>{" "}
@@ -253,22 +245,39 @@ function Hero() {
         </h1>
 
         <p
-          className="mt-6 mx-auto max-w-2xl text-lg sm:text-xl text-muted-foreground animate-slide-up"
+          className="mt-5 mx-auto max-w-2xl text-base sm:text-xl text-muted-foreground animate-slide-up"
           style={{ animationDelay: "120ms" }}
         >
           Открытый конкурс аналитики по российскому фондовому рынку.
         </p>
 
         <div
-          className="mt-8 inline-flex items-center gap-3 px-4 py-3 rounded-xl border border-border bg-surface/70 backdrop-blur animate-slide-up"
+          className="mt-8 inline-flex flex-wrap items-center justify-center gap-2 sm:gap-3 animate-slide-up"
           style={{ animationDelay: "180ms" }}
         >
-          <ShieldCheck className="h-5 w-5 text-accent-cyan shrink-0" />
-          <p className="text-sm sm:text-[15px] text-foreground/90">
-            Организатор: <span className="font-semibold">Invest-idei.ru</span>{" "}
-            <span className="text-muted-foreground">при поддержке</span>{" "}
-            <span className="font-semibold">ПАО Московская Биржа</span>
-          </p>
+          <div className="inline-flex items-center gap-2.5 pl-2 pr-4 py-2 rounded-full border border-border bg-surface/80 backdrop-blur">
+            <span className="grid place-items-center w-7 h-7 rounded-full bg-gradient-primary text-primary-foreground text-[11px] font-bold">
+              ii
+            </span>
+            <div className="text-left leading-tight">
+              <div className="text-[10px] uppercase tracking-wider text-muted-foreground">
+                Организатор
+              </div>
+              <div className="text-sm font-semibold">Invest-idei.ru</div>
+            </div>
+          </div>
+          <span className="text-muted-foreground text-sm font-medium px-1">×</span>
+          <div className="inline-flex items-center gap-2.5 pl-2 pr-4 py-2 rounded-full border border-border bg-surface/80 backdrop-blur">
+            <span className="grid place-items-center w-7 h-7 rounded-full bg-[oklch(0.85_0.14_85)] text-background text-[11px] font-bold">
+              M
+            </span>
+            <div className="text-left leading-tight">
+              <div className="text-[10px] uppercase tracking-wider text-muted-foreground">
+                Партнёр
+              </div>
+              <div className="text-sm font-semibold">Московская Биржа</div>
+            </div>
+          </div>
         </div>
 
         <div
@@ -294,7 +303,7 @@ function Hero() {
 function Awards() {
   const months = ["Июль", "Август", "Сентябрь", "Октябрь", "Ноябрь", "Декабрь"];
   return (
-    <section id="awards" className="relative py-16 sm:py-20">
+    <section id="awards" className="relative py-12 sm:py-16">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center">
         <SectionEyebrow icon={<Trophy className="h-3.5 w-3.5" />}>Награды</SectionEyebrow>
         <h2 className="mt-3 font-display font-bold text-3xl sm:text-5xl">Призовой фонд</h2>
@@ -304,7 +313,7 @@ function Awards() {
           <div className="relative grid lg:grid-cols-2 gap-8 items-center">
             <div className="text-center lg:text-left">
               <div className="text-sm text-muted-foreground">Общий призовой фонд</div>
-              <div className="mt-2 font-display font-extrabold text-5xl sm:text-7xl lg:text-[6.5rem] tracking-tight text-gradient-gold leading-none whitespace-nowrap">
+              <div className="mt-2 font-display font-extrabold text-[2.5rem] sm:text-7xl lg:text-[6.5rem] tracking-tight text-gradient-gold leading-none whitespace-nowrap">
                 5&nbsp;400&nbsp;000&nbsp;₽
               </div>
               <div className="mt-3 text-sm sm:text-base text-muted-foreground">
@@ -459,36 +468,56 @@ function Format() {
     },
   ];
   return (
-    <section id="format" className="py-16 sm:py-20">
-      <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 text-center">
+    <section id="format" className="py-12 sm:py-16">
+      <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 text-center">
         <SectionEyebrow icon={<Sparkles className="h-3.5 w-3.5" />}>Формат</SectionEyebrow>
         <h2 className="mt-3 font-display font-bold text-3xl sm:text-5xl">
-          Как это работает — простыми словами
+          Как это работает
         </h2>
         <p className="mt-4 mx-auto max-w-2xl text-muted-foreground text-base sm:text-lg">
-          Никаких заявок на каждую идею, никаких отчётов и таблиц. Вы просто
-          делаете то, что и так делаете — а мы считаем.
+          Вы просто делаете то, что и так делаете — а мы доносим ваши идеи
+          до широкой аудитории.
         </p>
 
-        <div className="mt-12 grid sm:grid-cols-2 gap-5 text-left">
-          {simple.map((s) => (
-            <div
-              key={s.n}
-              className="rounded-2xl border border-border bg-surface p-6 sm:p-7 transition hover:border-foreground/20"
-            >
-              <div className="flex items-start gap-4">
-                <div className="grid place-items-center w-11 h-11 rounded-xl bg-gradient-primary text-primary-foreground font-display font-bold text-lg shrink-0 shadow-glow">
+        {/* Desktop timeline */}
+        <div className="hidden lg:block mt-16 relative">
+          <div className="absolute top-7 left-[8%] right-[8%] h-px bg-gradient-to-r from-transparent via-[oklch(0.66_0.16_250)]/60 to-transparent" />
+          <div className="grid grid-cols-4 gap-6 relative">
+            {simple.map((s, i) => (
+              <div key={s.n} className="relative flex flex-col items-center text-center px-2">
+                <div className="relative grid place-items-center w-14 h-14 rounded-full bg-gradient-primary text-primary-foreground font-display font-bold text-xl shadow-glow ring-4 ring-background z-10">
                   {s.n}
                 </div>
-                <div>
-                  <h3 className="font-display font-semibold text-lg sm:text-xl">{s.title}</h3>
-                  <p className="mt-2 text-sm sm:text-[15px] text-muted-foreground leading-relaxed">
+                {i < simple.length - 1 && (
+                  <ArrowRight className="hidden lg:block absolute top-5 -right-4 h-5 w-5 text-[oklch(0.66_0.16_250)]/70 z-20" />
+                )}
+                <h3 className="mt-5 font-display font-semibold text-lg">{s.title}</h3>
+                <p className="mt-2 text-sm text-muted-foreground leading-relaxed">
+                  {s.text}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Mobile/tablet vertical timeline */}
+        <div className="lg:hidden mt-10 relative text-left">
+          <div className="absolute left-[27px] top-2 bottom-2 w-px bg-gradient-to-b from-[oklch(0.66_0.16_250)]/60 via-[oklch(0.66_0.16_250)]/40 to-transparent" />
+          <div className="space-y-5">
+            {simple.map((s) => (
+              <div key={s.n} className="relative pl-16">
+                <div className="absolute left-0 top-0 grid place-items-center w-14 h-14 rounded-full bg-gradient-primary text-primary-foreground font-display font-bold text-lg shadow-glow ring-4 ring-background">
+                  {s.n}
+                </div>
+                <div className="rounded-2xl border border-border bg-surface p-5">
+                  <h3 className="font-display font-semibold text-lg">{s.title}</h3>
+                  <p className="mt-2 text-sm text-muted-foreground leading-relaxed">
                     {s.text}
                   </p>
                 </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </div>
     </section>
@@ -500,34 +529,28 @@ function Format() {
 function Participation() {
   const cards = [
     {
-      icon: <Building2 className="h-5 w-5" />,
+      icon: <Building2 className="h-6 w-6" />,
+      tag: "Институционалы",
       title: "Профессиональные аналитики",
-      text: "Сотрудники брокеров, управляющих компаний, банков, инвестиционных домов и других профучастников рынка.",
+      text: "Сотрудники брокеров, управляющих компаний, банков и инвестиционных домов.",
+      bullets: [
+        "Брокерские компании",
+        "Управляющие компании",
+        "Банки и инвест-дома",
+      ],
+      accent: "primary" as const,
     },
     {
-      icon: <PenLine className="h-5 w-5" />,
+      icon: <PenLine className="h-6 w-6" />,
+      tag: "Авторы",
       title: "Независимые авторы",
       text: "Финансовые блогеры, авторы Telegram-каналов, рассылок, сайтов и аналитических сервисов.",
-    },
-    {
-      icon: <Link2 className="h-5 w-5" />,
-      title: "Автоматический сбор идей",
-      text: "Вы можете прислать ссылку на ваш ресурс, и мы сможем автоматически забирать ваши идеи из открытых источников.",
-    },
-    {
-      icon: <Settings2 className="h-5 w-5" />,
-      title: "Индивидуальная интеграция",
-      text: "Можно связаться с нами и настроить удобный формат: фид, рассылка, API, таблица или другой способ передачи идей.",
-    },
-    {
-      icon: <InfinityIcon className="h-5 w-5" />,
-      title: "Без ограничения по количеству идей",
-      text: "Один участник может отправлять любое количество идей, получать несколько наград и побеждать каждый месяц.",
-    },
-    {
-      icon: <BarChart3 className="h-5 w-5" />,
-      title: "Акции, БПИФ и OTC",
-      text: "Принимаются идеи по акциям и БПИФ, торгуемым на Московской бирже, а также идеи по внебиржевому рынку OTC.",
+      bullets: [
+        "Telegram-каналы и блоги",
+        "Авторские рассылки",
+        "Сайты и сервисы аналитики",
+      ],
+      accent: "gold" as const,
     },
   ];
   const benefits = [
@@ -548,29 +571,62 @@ function Participation() {
     },
   ];
   return (
-    <section id="participation" className="py-16 sm:py-20">
+    <section id="participation" className="py-12 sm:py-16">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center">
         <SectionEyebrow icon={<Crown className="h-3.5 w-3.5" />}>Участие</SectionEyebrow>
         <h2 className="mt-3 font-display font-bold text-3xl sm:text-5xl">
           Кто может участвовать
         </h2>
 
-        <div className="mt-10 grid md:grid-cols-2 lg:grid-cols-3 gap-5 text-left">
-          {cards.map((c) => (
-            <div
-              key={c.title}
-              className="rounded-2xl border border-border bg-surface p-6 transition hover:border-foreground/20 hover:-translate-y-0.5"
-            >
-              <div className="grid place-items-center w-11 h-11 rounded-lg bg-background border border-border text-accent-cyan">
-                {c.icon}
+        <div className="mt-10 mx-auto max-w-5xl grid md:grid-cols-2 gap-5 text-left">
+          {cards.map((c) => {
+            const isGold = c.accent === "gold";
+            return (
+              <div
+                key={c.title}
+                className="group relative rounded-3xl border border-border bg-gradient-to-br from-surface-2 to-surface p-7 sm:p-8 overflow-hidden transition hover:-translate-y-1 hover:border-foreground/25 hover:shadow-elegant"
+              >
+                <div
+                  className={`absolute -top-20 -right-20 h-56 w-56 rounded-full blur-3xl opacity-25 ${
+                    isGold ? "bg-gradient-gold" : "bg-gradient-primary"
+                  }`}
+                />
+                <div className="relative">
+                  <div className="flex items-center justify-between">
+                    <div
+                      className={`grid place-items-center w-14 h-14 rounded-2xl text-primary-foreground shadow-glow ${
+                        isGold ? "bg-gradient-gold text-background" : "bg-gradient-primary"
+                      }`}
+                    >
+                      {c.icon}
+                    </div>
+                    <span className="text-[10px] uppercase tracking-[0.18em] text-muted-foreground px-2.5 py-1 rounded-full border border-border bg-background/40">
+                      {c.tag}
+                    </span>
+                  </div>
+                  <h3 className="mt-6 font-display font-bold text-2xl">{c.title}</h3>
+                  <p className="mt-2.5 text-sm sm:text-[15px] text-muted-foreground leading-relaxed">
+                    {c.text}
+                  </p>
+                  <ul className="mt-5 space-y-2.5 pt-5 border-t border-border">
+                    {c.bullets.map((b) => (
+                      <li key={b} className="flex items-center gap-2.5 text-sm">
+                        <CheckCircle2
+                          className={`h-4 w-4 shrink-0 ${
+                            isGold ? "text-[oklch(0.85_0.14_85)]" : "text-accent-cyan"
+                          }`}
+                        />
+                        <span className="text-foreground/90">{b}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
               </div>
-              <h3 className="mt-5 font-display font-semibold text-lg">{c.title}</h3>
-              <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{c.text}</p>
-            </div>
-          ))}
+            );
+          })}
         </div>
 
-        <div className="mt-20 text-center">
+        <div className="mt-16 text-center">
           <h3 className="font-display font-bold text-2xl sm:text-3xl">Что получает участник</h3>
           <div className="mt-8 grid md:grid-cols-3 gap-5 text-left">
             {benefits.map((b) => (
@@ -644,7 +700,7 @@ function Faq() {
     setOpen((prev) => (prev.includes(i) ? prev.filter((x) => x !== i) : [...prev, i]));
 
   return (
-    <section id="faq" className="py-16 sm:py-20">
+    <section id="faq" className="py-12 sm:py-16">
       <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 text-center">
         <SectionEyebrow icon={<Sparkles className="h-3.5 w-3.5" />}>FAQ</SectionEyebrow>
         <h2 className="mt-3 font-display font-bold text-3xl sm:text-5xl">
@@ -709,7 +765,7 @@ const applicationSchema = z.object({
 
 function Apply() {
   return (
-    <section id="apply" className="py-16 sm:py-20 scroll-mt-24">
+    <section id="apply" className="py-12 sm:py-16 scroll-mt-24">
       <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 text-center">
         <SectionEyebrow icon={<Sparkles className="h-3.5 w-3.5" />}>Заявка</SectionEyebrow>
         <h2 className="mt-3 font-display font-bold text-3xl sm:text-5xl">
