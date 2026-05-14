@@ -472,36 +472,56 @@ function Format() {
     },
   ];
   return (
-    <section id="format" className="py-16 sm:py-20">
-      <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 text-center">
+    <section id="format" className="py-12 sm:py-16">
+      <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 text-center">
         <SectionEyebrow icon={<Sparkles className="h-3.5 w-3.5" />}>Формат</SectionEyebrow>
         <h2 className="mt-3 font-display font-bold text-3xl sm:text-5xl">
-          Как это работает — простыми словами
+          Как это работает
         </h2>
         <p className="mt-4 mx-auto max-w-2xl text-muted-foreground text-base sm:text-lg">
-          Никаких заявок на каждую идею, никаких отчётов и таблиц. Вы просто
-          делаете то, что и так делаете — а мы считаем.
+          Вы просто делаете то, что и так делаете — а мы доносим ваши идеи
+          до широкой аудитории.
         </p>
 
-        <div className="mt-12 grid sm:grid-cols-2 gap-5 text-left">
-          {simple.map((s) => (
-            <div
-              key={s.n}
-              className="rounded-2xl border border-border bg-surface p-6 sm:p-7 transition hover:border-foreground/20"
-            >
-              <div className="flex items-start gap-4">
-                <div className="grid place-items-center w-11 h-11 rounded-xl bg-gradient-primary text-primary-foreground font-display font-bold text-lg shrink-0 shadow-glow">
+        {/* Desktop timeline */}
+        <div className="hidden lg:block mt-16 relative">
+          <div className="absolute top-7 left-[8%] right-[8%] h-px bg-gradient-to-r from-transparent via-[oklch(0.66_0.16_250)]/60 to-transparent" />
+          <div className="grid grid-cols-4 gap-6 relative">
+            {simple.map((s, i) => (
+              <div key={s.n} className="relative flex flex-col items-center text-center px-2">
+                <div className="relative grid place-items-center w-14 h-14 rounded-full bg-gradient-primary text-primary-foreground font-display font-bold text-xl shadow-glow ring-4 ring-background z-10">
                   {s.n}
                 </div>
-                <div>
-                  <h3 className="font-display font-semibold text-lg sm:text-xl">{s.title}</h3>
-                  <p className="mt-2 text-sm sm:text-[15px] text-muted-foreground leading-relaxed">
+                {i < simple.length - 1 && (
+                  <ArrowRight className="hidden lg:block absolute top-5 -right-4 h-5 w-5 text-[oklch(0.66_0.16_250)]/70 z-20" />
+                )}
+                <h3 className="mt-5 font-display font-semibold text-lg">{s.title}</h3>
+                <p className="mt-2 text-sm text-muted-foreground leading-relaxed">
+                  {s.text}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Mobile/tablet vertical timeline */}
+        <div className="lg:hidden mt-10 relative text-left">
+          <div className="absolute left-[27px] top-2 bottom-2 w-px bg-gradient-to-b from-[oklch(0.66_0.16_250)]/60 via-[oklch(0.66_0.16_250)]/40 to-transparent" />
+          <div className="space-y-5">
+            {simple.map((s) => (
+              <div key={s.n} className="relative pl-16">
+                <div className="absolute left-0 top-0 grid place-items-center w-14 h-14 rounded-full bg-gradient-primary text-primary-foreground font-display font-bold text-lg shadow-glow ring-4 ring-background">
+                  {s.n}
+                </div>
+                <div className="rounded-2xl border border-border bg-surface p-5">
+                  <h3 className="font-display font-semibold text-lg">{s.title}</h3>
+                  <p className="mt-2 text-sm text-muted-foreground leading-relaxed">
                     {s.text}
                   </p>
                 </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </div>
     </section>
