@@ -304,7 +304,7 @@ function Awards() {
           <div className="absolute -top-24 -right-24 h-72 w-72 rounded-full bg-gradient-gold opacity-20 blur-3xl" />
           <div className="relative grid lg:grid-cols-2 gap-8 items-center">
             <div className="text-center lg:text-left">
-              <div className="mt-2 font-display font-extrabold tracking-tight text-gradient-gold leading-none whitespace-nowrap text-[clamp(2rem,11vw,6rem)]">
+              <div className="mt-2 font-display font-extrabold tracking-tight text-gradient-gold leading-none whitespace-nowrap text-[clamp(2rem,11vw,5rem)] lg:text-[clamp(2rem,5.2vw,5rem)]">
                 5&nbsp;400&nbsp;000&nbsp;₽
               </div>
               <div className="mt-3 text-sm sm:text-base text-muted-foreground">
