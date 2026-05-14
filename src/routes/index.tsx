@@ -751,8 +751,7 @@ const applicationSchema = z.object({
     .string()
     .trim()
     .min(1, { message: "Укажите ссылку на ваш ресурс" })
-    .max(500, { message: "Ссылка слишком длинная" })
-    .url({ message: "Введите корректную ссылку" }),
+    .max(500, { message: "Слишком длинное значение" }),
 });
 
 function Apply() {
@@ -823,12 +822,9 @@ function ApplyForm() {
         </div>
         <h4 className="mt-5 font-display font-bold text-xl">Спасибо! Заявка отправлена.</h4>
         <p className="mt-2 text-sm text-muted-foreground">Мы свяжемся с вами.</p>
-        <button
-          onClick={() => setSuccess(false)}
-          className="mt-6 text-sm text-accent-cyan hover:underline"
-        >
-          Отправить ещё одну заявку
-        </button>
+        <p className="mt-6 text-sm text-accent-cyan">
+          Можно приступать к придумыванию инвест-идей!
+        </p>
       </div>
     );
   }
@@ -888,10 +884,10 @@ function ApplyForm() {
       >
         <input
           id="link"
-          type="url"
+          type="text"
           value={link}
           onChange={(e) => setLink(e.target.value)}
-          placeholder="https://t.me/your_channel"
+          placeholder="https://t.me/your_channel или @your_nickname"
           className="w-full h-12 px-4 rounded-lg bg-background border border-border text-foreground placeholder:text-muted-foreground/60 focus:outline-none focus:ring-2 focus:ring-ring focus:border-transparent transition"
           aria-invalid={!!errors.link}
           required
