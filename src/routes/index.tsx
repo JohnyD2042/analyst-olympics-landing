@@ -255,10 +255,7 @@ function Hero() {
           className="mt-8 inline-flex flex-wrap items-center justify-center gap-2 sm:gap-3 animate-slide-up"
           style={{ animationDelay: "180ms" }}
         >
-          <div className="inline-flex items-center gap-2.5 pl-2 pr-4 py-2 rounded-full border border-border bg-surface/80 backdrop-blur">
-            <span className="grid place-items-center w-7 h-7 rounded-full bg-gradient-primary text-primary-foreground text-[11px] font-bold">
-              ii
-            </span>
+          <div className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full border border-border bg-surface/80 backdrop-blur">
             <div className="text-left leading-tight">
               <div className="text-[10px] uppercase tracking-wider text-muted-foreground">
                 Организатор
@@ -267,10 +264,7 @@ function Hero() {
             </div>
           </div>
           <span className="text-muted-foreground text-sm font-medium px-1">×</span>
-          <div className="inline-flex items-center gap-2.5 pl-2 pr-4 py-2 rounded-full border border-border bg-surface/80 backdrop-blur">
-            <span className="grid place-items-center w-7 h-7 rounded-full bg-[oklch(0.85_0.14_85)] text-background text-[11px] font-bold">
-              M
-            </span>
+          <div className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full border border-border bg-surface/80 backdrop-blur">
             <div className="text-left leading-tight">
               <div className="text-[10px] uppercase tracking-wider text-muted-foreground">
                 Партнёр
