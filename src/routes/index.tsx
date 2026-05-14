@@ -533,34 +533,28 @@ function Format() {
 function Participation() {
   const cards = [
     {
-      icon: <Building2 className="h-5 w-5" />,
+      icon: <Building2 className="h-6 w-6" />,
+      tag: "Институционалы",
       title: "Профессиональные аналитики",
-      text: "Сотрудники брокеров, управляющих компаний, банков, инвестиционных домов и других профучастников рынка.",
+      text: "Сотрудники брокеров, управляющих компаний, банков и инвестиционных домов.",
+      bullets: [
+        "Брокерские компании",
+        "Управляющие компании",
+        "Банки и инвест-дома",
+      ],
+      accent: "primary" as const,
     },
     {
-      icon: <PenLine className="h-5 w-5" />,
+      icon: <PenLine className="h-6 w-6" />,
+      tag: "Авторы",
       title: "Независимые авторы",
       text: "Финансовые блогеры, авторы Telegram-каналов, рассылок, сайтов и аналитических сервисов.",
-    },
-    {
-      icon: <Link2 className="h-5 w-5" />,
-      title: "Автоматический сбор идей",
-      text: "Вы можете прислать ссылку на ваш ресурс, и мы сможем автоматически забирать ваши идеи из открытых источников.",
-    },
-    {
-      icon: <Settings2 className="h-5 w-5" />,
-      title: "Индивидуальная интеграция",
-      text: "Можно связаться с нами и настроить удобный формат: фид, рассылка, API, таблица или другой способ передачи идей.",
-    },
-    {
-      icon: <InfinityIcon className="h-5 w-5" />,
-      title: "Без ограничения по количеству идей",
-      text: "Один участник может отправлять любое количество идей, получать несколько наград и побеждать каждый месяц.",
-    },
-    {
-      icon: <BarChart3 className="h-5 w-5" />,
-      title: "Акции, БПИФ и OTC",
-      text: "Принимаются идеи по акциям и БПИФ, торгуемым на Московской бирже, а также идеи по внебиржевому рынку OTC.",
+      bullets: [
+        "Telegram-каналы и блоги",
+        "Авторские рассылки",
+        "Сайты и сервисы аналитики",
+      ],
+      accent: "gold" as const,
     },
   ];
   const benefits = [
@@ -581,29 +575,62 @@ function Participation() {
     },
   ];
   return (
-    <section id="participation" className="py-16 sm:py-20">
+    <section id="participation" className="py-12 sm:py-16">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center">
         <SectionEyebrow icon={<Crown className="h-3.5 w-3.5" />}>Участие</SectionEyebrow>
         <h2 className="mt-3 font-display font-bold text-3xl sm:text-5xl">
           Кто может участвовать
         </h2>
 
-        <div className="mt-10 grid md:grid-cols-2 lg:grid-cols-3 gap-5 text-left">
-          {cards.map((c) => (
-            <div
-              key={c.title}
-              className="rounded-2xl border border-border bg-surface p-6 transition hover:border-foreground/20 hover:-translate-y-0.5"
-            >
-              <div className="grid place-items-center w-11 h-11 rounded-lg bg-background border border-border text-accent-cyan">
-                {c.icon}
+        <div className="mt-10 mx-auto max-w-5xl grid md:grid-cols-2 gap-5 text-left">
+          {cards.map((c) => {
+            const isGold = c.accent === "gold";
+            return (
+              <div
+                key={c.title}
+                className="group relative rounded-3xl border border-border bg-gradient-to-br from-surface-2 to-surface p-7 sm:p-8 overflow-hidden transition hover:-translate-y-1 hover:border-foreground/25 hover:shadow-elegant"
+              >
+                <div
+                  className={`absolute -top-20 -right-20 h-56 w-56 rounded-full blur-3xl opacity-25 ${
+                    isGold ? "bg-gradient-gold" : "bg-gradient-primary"
+                  }`}
+                />
+                <div className="relative">
+                  <div className="flex items-center justify-between">
+                    <div
+                      className={`grid place-items-center w-14 h-14 rounded-2xl text-primary-foreground shadow-glow ${
+                        isGold ? "bg-gradient-gold text-background" : "bg-gradient-primary"
+                      }`}
+                    >
+                      {c.icon}
+                    </div>
+                    <span className="text-[10px] uppercase tracking-[0.18em] text-muted-foreground px-2.5 py-1 rounded-full border border-border bg-background/40">
+                      {c.tag}
+                    </span>
+                  </div>
+                  <h3 className="mt-6 font-display font-bold text-2xl">{c.title}</h3>
+                  <p className="mt-2.5 text-sm sm:text-[15px] text-muted-foreground leading-relaxed">
+                    {c.text}
+                  </p>
+                  <ul className="mt-5 space-y-2.5 pt-5 border-t border-border">
+                    {c.bullets.map((b) => (
+                      <li key={b} className="flex items-center gap-2.5 text-sm">
+                        <CheckCircle2
+                          className={`h-4 w-4 shrink-0 ${
+                            isGold ? "text-[oklch(0.85_0.14_85)]" : "text-accent-cyan"
+                          }`}
+                        />
+                        <span className="text-foreground/90">{b}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
               </div>
-              <h3 className="mt-5 font-display font-semibold text-lg">{c.title}</h3>
-              <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{c.text}</p>
-            </div>
-          ))}
+            );
+          })}
         </div>
 
-        <div className="mt-20 text-center">
+        <div className="mt-16 text-center">
           <h3 className="font-display font-bold text-2xl sm:text-3xl">Что получает участник</h3>
           <div className="mt-8 grid md:grid-cols-3 gap-5 text-left">
             {benefits.map((b) => (
