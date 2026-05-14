@@ -19,6 +19,7 @@ import {
   CheckCircle2,
   Plus,
   Minus,
+  Palmtree,
 } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
@@ -233,7 +234,7 @@ function Hero() {
             <span className="absolute inline-flex h-full w-full rounded-full bg-accent-cyan opacity-75 animate-pulse-dot" />
             <span className="relative inline-flex rounded-full h-2 w-2 bg-accent-cyan" />
           </span>
-          Регистрация открыта · Старт — июль 2026
+          Регистрация открыта · Старт — май 2026
         </div>
 
         <h1
@@ -307,11 +308,11 @@ function Awards() {
           <div className="relative grid lg:grid-cols-2 gap-8 items-center">
             <div className="text-center lg:text-left">
               <div className="text-sm text-muted-foreground">Общий призовой фонд</div>
-              <div className="mt-2 font-display font-extrabold text-[2.5rem] sm:text-7xl lg:text-[6.5rem] tracking-tight text-gradient-gold leading-none whitespace-nowrap">
+              <div className="mt-2 font-display font-extrabold tracking-tight text-gradient-gold leading-none whitespace-nowrap text-[clamp(2rem,11vw,6rem)]">
                 5&nbsp;400&nbsp;000&nbsp;₽
               </div>
               <div className="mt-3 text-sm sm:text-base text-muted-foreground">
-                Олимпиада аналитиков 2026
+                Распределяем среди лучших аналитиков
               </div>
               <div className="mt-2 text-base sm:text-lg font-semibold">
                 6 ежемесячных награждений × 900 000 ₽
@@ -350,9 +351,8 @@ function Awards() {
         <div className="mt-14 text-center">
           <h3 className="font-display font-bold text-2xl sm:text-3xl">Ежемесячные награды</h3>
           <p className="mt-3 mx-auto max-w-2xl text-muted-foreground">
-            Каждый месяц мы выбираем лучшие инвестиционные идеи по трём
-            направлениям и награждаем авторов за точность, качество аналитики и
-            результат.
+            Каждый месяц определяем самые доходные инвест-идеи и награждаем
+            авторов.
           </p>
 
           <div className="mt-8 grid md:grid-cols-3 gap-5 text-left">
@@ -360,19 +360,19 @@ function Awards() {
               tier="gold"
               title="Лучшая идея по акциям"
               prize="500 000 ₽"
-              description="Золотая медаль и денежный приз за лучшую инвестиционную идею по акциям."
+              description="Золотая медаль и денежный приз за лучшую инвест-идею."
             />
             <NominationCard
               tier="primary"
               title="Лучшая идея по БПИФ"
               prize="350 000 ₽"
-              description="Золотая медаль и денежный приз за лучшую инвестиционную идею по биржевым фондам."
+              description="Золотая медаль и денежный приз за лучшую инвест-идею."
             />
             <NominationCard
               tier="bronze"
               title="Лучшая идея по OTC"
               prize="50 000 ₽"
-              description="Золотая медаль и денежный приз за лучшую инвестиционную идею по внебиржевому рынку."
+              description="Золотая медаль и денежный приз за лучшую инвест-идею."
             />
           </div>
         </div>
@@ -429,7 +429,7 @@ function NominationCard({
           {description}
         </p>
         <div className="mt-5 pt-4 border-t border-border text-xs text-muted-foreground">
-          Серебро и бронза — признание, статус и публичное упоминание.
+          Серебро и бронза — медали в рейтинге, идущие в общий зачёт, признание и статус.
         </div>
       </div>
     </div>
@@ -443,7 +443,7 @@ function Format() {
     {
       n: "1",
       title: "Вы делитесь идеей",
-      text: "Пишете в своём канале, блоге или на сайте: «Думаю, акция X вырастет до Y». Этого достаточно.",
+      text: "Пишете в своём канале, блоге или на сайте: «Думаем, что акция X вырастет до Y по следующим причинам». Этого достаточно.",
     },
     {
       n: "2",
@@ -469,8 +469,8 @@ function Format() {
           Как это работает
         </h2>
         <p className="mt-4 mx-auto max-w-2xl text-muted-foreground text-base sm:text-lg">
-          Вы просто делаете то, что и так делаете — а мы доносим ваши идеи
-          до широкой аудитории.
+          Вы просто делаете то, что и так делаете — свою аналитику, а мы
+          доносим ваши идеи до широкой аудитории.
         </p>
 
         {/* Desktop timeline */}
@@ -535,10 +535,10 @@ function Participation() {
       accent: "primary" as const,
     },
     {
-      icon: <PenLine className="h-6 w-6" />,
-      tag: "Авторы",
-      title: "Независимые авторы",
-      text: "Финансовые блогеры, авторы Telegram-каналов, рассылок, сайтов и аналитических сервисов.",
+      icon: <Palmtree className="h-6 w-6" />,
+      tag: "Инфлюенсеры",
+      title: "Независимые инфлюенсеры",
+      text: "",
       bullets: [
         "Telegram-каналы и блоги",
         "Авторские рассылки",
