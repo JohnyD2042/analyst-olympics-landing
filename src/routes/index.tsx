@@ -11,7 +11,6 @@ import {
   Award,
   Crown,
   Building2,
-  PenLine,
   ShieldCheck,
   Megaphone,
   Sparkles,
