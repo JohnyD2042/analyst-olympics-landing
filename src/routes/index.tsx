@@ -316,10 +316,6 @@ function Awards() {
             </div>
 
             <div>
-              <div className="flex items-center justify-between text-xs text-muted-foreground mb-3">
-                <span>Распределение по месяцам</span>
-                <span>900 000 ₽ × 6</span>
-              </div>
               <div className="grid grid-cols-6 gap-1.5">
                 {months.map((m, i) => (
                   <div
@@ -345,7 +341,7 @@ function Awards() {
         </div>
 
         <div className="mt-14 text-center">
-          <h3 className="font-display font-bold text-2xl sm:text-3xl">Ежемесячные награды</h3>
+          <h3 className="font-display font-bold text-2xl sm:text-3xl">Нон-стоп награды</h3>
           <p className="mt-3 mx-auto max-w-2xl text-muted-foreground">
             Каждый месяц определяем самые доходные инвест-идеи и награждаем
             авторов.
