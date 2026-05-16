@@ -19,6 +19,7 @@ import {
   Plus,
   Minus,
   Palmtree,
+  Star,
 } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
@@ -541,17 +542,17 @@ function Participation() {
   ];
   const benefits = [
     {
-      icon: <ShieldCheck className="h-5 w-5" />,
+      icon: <Star className="h-5 w-5" />,
       title: "Знак качества",
       text: "Независимая оценка вашей аналитики и публичное подтверждение качества инвестиционных идей.",
     },
     {
       icon: <Megaphone className="h-5 w-5" />,
       title: "Продвижение бренда",
-      text: "Ваши идеи, имя, канал или компания получают дополнительное внимание профессионального сообщества.",
+      text: "Ваши идеи автоматически и бесплатно транслируются на аудиторию из сотен тысяч инвесторов — на сайте Invest-idei.ru, ресурсах Мосбиржи, приложениях ведущих брокеров с вашим именем и ссылкой.",
     },
     {
-      icon: <Sparkles className="h-5 w-5" />,
+      icon: <Medal className="h-5 w-5" />,
       title: "Награды и признание",
       text: "Денежные призы, медали, статус победителя и регулярное попадание в рейтинг лучших аналитиков рынка.",
     },
