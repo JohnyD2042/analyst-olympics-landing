@@ -598,6 +598,11 @@ function Participation() {
                       {c.text}
                     </p>
                   )}
+                  {c.footnote && (
+                    <p className="mt-2 text-xs text-muted-foreground/70 leading-relaxed">
+                      {c.footnote}
+                    </p>
+                  )}
                   <ul className="mt-5 space-y-2.5 pt-5 border-t border-border">
                     {c.bullets.map((b) => (
                       <li key={b} className="flex items-center gap-2.5 text-sm">
