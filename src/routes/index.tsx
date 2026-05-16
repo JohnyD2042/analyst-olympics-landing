@@ -532,6 +532,7 @@ function Participation() {
       tag: "Инфлюенсеры",
       title: "Независимые авторы",
       text: "",
+      footnote: "Попросим подтвердить опыт и пройти верификацию",
       bullets: [
         "Telegram-каналы и блоги",
         "Авторские рассылки",
@@ -595,6 +596,11 @@ function Participation() {
                   {c.text && (
                     <p className="mt-2.5 text-sm sm:text-[15px] text-muted-foreground leading-relaxed">
                       {c.text}
+                    </p>
+                  )}
+                  {c.footnote && (
+                    <p className="mt-2 text-xs text-muted-foreground/70 leading-relaxed">
+                      {c.footnote}
                     </p>
                   )}
                   <ul className="mt-5 space-y-2.5 pt-5 border-t border-border">
