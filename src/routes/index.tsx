@@ -698,7 +698,7 @@ const FAQ_ITEMS = [
 ];
 
 function Faq() {
-  const [open, setOpen] = useState<number[]>([0]);
+  const [open, setOpen] = useState<number[]>([]);
   const toggle = (i: number) =>
     setOpen((prev) => (prev.includes(i) ? prev.filter((x) => x !== i) : [...prev, i]));
 
@@ -719,6 +719,7 @@ function Faq() {
                 className="rounded-xl border border-border bg-surface/60 overflow-hidden"
               >
                 <button
+                  type="button"
                   onClick={() => toggle(i)}
                   className="w-full flex items-center justify-between gap-4 px-5 py-4 text-left"
                   aria-expanded={isOpen}
@@ -728,16 +729,11 @@ function Faq() {
                     {isOpen ? <Minus className="h-4 w-4" /> : <Plus className="h-4 w-4" />}
                   </span>
                 </button>
-                <div
-                  className="grid transition-all duration-300 ease-out"
-                  style={{ gridTemplateRows: isOpen ? "1fr" : "0fr" }}
-                >
-                  <div className="overflow-hidden">
-                    <p className="px-5 pb-5 text-sm sm:text-[15px] text-muted-foreground leading-relaxed">
-                      {item.a}
-                    </p>
-                  </div>
-                </div>
+                {isOpen && (
+                  <p className="px-5 pb-5 text-sm sm:text-[15px] text-muted-foreground leading-relaxed">
+                    {item.a}
+                  </p>
+                )}
               </div>
             );
           })}
