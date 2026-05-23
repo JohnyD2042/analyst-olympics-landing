@@ -803,6 +803,7 @@ function ApplyForm() {
       return;
     }
     setSubmitting(true);
+    const { supabase } = await import("@/integrations/supabase/client");
     const { error } = await supabase.from("applications").insert({
       name: parsed.data.name,
       status: parsed.data.status,
