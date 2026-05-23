@@ -247,7 +247,7 @@ function Hero() {
           className="mt-5 mx-auto max-w-2xl text-base sm:text-xl text-muted-foreground animate-slide-up"
           style={{ animationDelay: "120ms" }}
         >
-          Открытый конкурс аналитики по российскому фондовому рынку.
+          Открытый конкурс аналитики по российскому фондовому рынку
         </p>
 
         <div
@@ -342,7 +342,7 @@ function Awards() {
         </div>
 
         <div className="mt-14 text-center">
-          <h3 className="font-display font-bold text-2xl sm:text-3xl">Нон-стоп награды</h3>
+          <h3 className="font-display font-bold text-2xl sm:text-3xl">Платим за хорошие идеи</h3>
           <p className="mt-3 mx-auto max-w-2xl text-muted-foreground">
             Каждый месяц определяем самые доходные инвест-идеи и награждаем
             авторов.
@@ -353,19 +353,19 @@ function Awards() {
               tier="gold"
               title="Лучшая идея по акциям"
               prize="500 000 ₽"
-              description="Золотая медаль и денежный приз за лучшую инвест-идею."
+              description="Золотая медаль и денежный приз"
             />
             <NominationCard
               tier="primary"
               title="Лучшая идея по БПИФ"
               prize="350 000 ₽"
-              description="Золотая медаль и денежный приз за лучшую инвест-идею."
+              description="Золотая медаль и денежный приз"
             />
             <NominationCard
               tier="bronze"
               title="Лучшая идея по OTC"
               prize="50 000 ₽"
-              description="Золотая медаль и денежный приз за лучшую инвест-идею."
+              description="Золотая медаль и денежный приз"
             />
           </div>
         </div>
@@ -422,7 +422,7 @@ function NominationCard({
           {description}
         </p>
         <div className="mt-5 pt-4 border-t border-border text-xs text-muted-foreground">
-          Серебро и бронза — медали, влияющие на общий зачёт, позицию в рейтинге, признание.
+          Серебро и бронза — медали, продвижение в рейтинге, признание
         </div>
       </div>
     </div>
@@ -462,8 +462,8 @@ function Format() {
           Как это работает
         </h2>
         <p className="mt-4 mx-auto max-w-2xl text-muted-foreground text-base sm:text-lg">
-          Вы просто делаете то, что и так делаете — свою аналитику, а мы
-          доносим ваши идеи до широкой аудитории.
+          Вы просто делаете свою аналитику, а мы доносим ваши идеи до широкой
+          аудитории.
         </p>
 
         {/* Desktop timeline */}
@@ -534,7 +534,7 @@ function Participation() {
       text: "",
       footnote: "Попросим подтвердить опыт и пройти верификацию",
       bullets: [
-        "Telegram-каналы и блоги",
+        "Инвестиционные каналы и блоги",
         "Авторские рассылки",
         "Сайты и сервисы аналитики",
       ],
@@ -544,7 +544,7 @@ function Participation() {
   const benefits = [
     {
       icon: <Star className="h-5 w-5" />,
-      title: "Знак качества",
+      title: "Честный знак качества",
       text: "Независимая оценка вашей аналитики и публичное подтверждение качества инвестиционных идей.",
     },
     {
