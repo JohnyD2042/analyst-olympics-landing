@@ -247,7 +247,7 @@ function Hero() {
           className="mt-5 mx-auto max-w-2xl text-base sm:text-xl text-muted-foreground animate-slide-up"
           style={{ animationDelay: "120ms" }}
         >
-          Открытый конкурс аналитики по российскому фондовому рынку.
+          Открытый конкурс аналитики по российскому фондовому рынку
         </p>
 
         <div
@@ -342,7 +342,7 @@ function Awards() {
         </div>
 
         <div className="mt-14 text-center">
-          <h3 className="font-display font-bold text-2xl sm:text-3xl">Нон-стоп награды</h3>
+          <h3 className="font-display font-bold text-2xl sm:text-3xl">Платим за хорошие идеи</h3>
           <p className="mt-3 mx-auto max-w-2xl text-muted-foreground">
             Каждый месяц определяем самые доходные инвест-идеи и награждаем
             авторов.
@@ -353,19 +353,19 @@ function Awards() {
               tier="gold"
               title="Лучшая идея по акциям"
               prize="500 000 ₽"
-              description="Золотая медаль и денежный приз за лучшую инвест-идею."
+              description="Золотая медаль и денежный приз"
             />
             <NominationCard
               tier="primary"
               title="Лучшая идея по БПИФ"
               prize="350 000 ₽"
-              description="Золотая медаль и денежный приз за лучшую инвест-идею."
+              description="Золотая медаль и денежный приз"
             />
             <NominationCard
               tier="bronze"
               title="Лучшая идея по OTC"
               prize="50 000 ₽"
-              description="Золотая медаль и денежный приз за лучшую инвест-идею."
+              description="Золотая медаль и денежный приз"
             />
           </div>
         </div>
@@ -422,7 +422,7 @@ function NominationCard({
           {description}
         </p>
         <div className="mt-5 pt-4 border-t border-border text-xs text-muted-foreground">
-          Серебро и бронза — медали, влияющие на общий зачёт, позицию в рейтинге, признание.
+          Серебро и бронза — медали, продвижение в рейтинге, признание
         </div>
       </div>
     </div>
@@ -462,8 +462,8 @@ function Format() {
           Как это работает
         </h2>
         <p className="mt-4 mx-auto max-w-2xl text-muted-foreground text-base sm:text-lg">
-          Вы просто делаете то, что и так делаете — свою аналитику, а мы
-          доносим ваши идеи до широкой аудитории.
+          Вы просто делаете свою аналитику, а мы доносим ваши идеи до широкой
+          аудитории.
         </p>
 
         {/* Desktop timeline */}
@@ -534,7 +534,7 @@ function Participation() {
       text: "",
       footnote: "Попросим подтвердить опыт и пройти верификацию",
       bullets: [
-        "Telegram-каналы и блоги",
+        "Инвестиционные каналы и блоги",
         "Авторские рассылки",
         "Сайты и сервисы аналитики",
       ],
@@ -544,7 +544,7 @@ function Participation() {
   const benefits = [
     {
       icon: <Star className="h-5 w-5" />,
-      title: "Знак качества",
+      title: "Честный знак качества",
       text: "Независимая оценка вашей аналитики и публичное подтверждение качества инвестиционных идей.",
     },
     {
@@ -664,6 +664,14 @@ const FAQ_ITEMS = [
     a: "Оставьте заявку на сайте и укажите ссылку на ваш блог, канал, сайт, компанию или аналитический сервис. Мы свяжемся с вами и подскажем, как ваши идеи могут попадать в конкурс.",
   },
   {
+    q: "Сколько идет конкурс?",
+    a: "Скоро добавим подробный ответ.",
+  },
+  {
+    q: "Кто может принять участие?",
+    a: "Скоро добавим подробный ответ.",
+  },
+  {
     q: "Какие идеи принимаются?",
     a: "Мы принимаем инвестиционные идеи по акциям, БПИФ и инструментам внебиржевого рынка OTC, связанным с российским фондовым рынком и Московской биржей.",
   },
@@ -672,20 +680,20 @@ const FAQ_ITEMS = [
     a: "Не обязательно. Вы можете прислать ссылку на ваш публичный ресурс, и мы сможем настроить автоматический сбор идей. При необходимости можно согласовать отдельный формат передачи данных.",
   },
   {
-    q: "Как считается доходность идеи?",
-    a: "Доходность идеи оценивается по изменению цены инструмента после публикации идеи с учётом правил конкурса. Детальная методология будет описана в правилах конкурса.",
+    q: "Как определяются лучшие идеи месяца?",
+    a: "Скоро добавим подробный ответ.",
   },
   {
     q: "Можно ли получить несколько наград?",
     a: "Да. Количество идей не ограничено. Один участник может получить несколько наград в разных номинациях или побеждать в разные месяцы.",
   },
   {
-    q: "Кто организатор конкурса?",
-    a: "Организатор конкурса — Invest-idei.ru при поддержке ПАО Московская Биржа.",
+    q: "Как и когда выплачиваются призы?",
+    a: "Скоро добавим подробный ответ.",
   },
   {
-    q: "Где посмотреть правила конкурса?",
-    a: "Правила конкурса будут доступны по отдельной ссылке: «Правила конкурса».",
+    q: "Как связаться с организатором конкурса?",
+    a: "Скоро добавим подробный ответ.",
   },
 ];
 
@@ -780,7 +788,7 @@ function Apply() {
 
 function ApplyForm() {
   const [name, setName] = useState("");
-  const [status, setStatus] = useState<"" | "Профучастник" | "Частный аналитик">("");
+  const [status, setStatus] = useState<"" | "Профучастник" | "Частный аналитик">("Профучастник");
   const [link, setLink] = useState("");
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [submitting, setSubmitting] = useState(false);
@@ -812,7 +820,7 @@ function ApplyForm() {
     }
     setSuccess(true);
     setName("");
-    setStatus("");
+    setStatus("Профучастник");
     setLink("");
     toast.success("Спасибо! Заявка отправлена.");
   };
@@ -1002,13 +1010,14 @@ function Footer() {
                 </a>
               </li>
               <li>
-                <a href="#" className="text-foreground/80 hover:text-foreground transition-colors">
+                <a
+                  href="https://invest-idei.ru/uploads/6a11042a948c7.pdf"
+                  target="_blank"
+                  rel="noreferrer noopener"
+                  className="text-foreground/80 hover:text-foreground transition-colors inline-flex items-center gap-1.5"
+                >
                   Правила конкурса
-                </a>
-              </li>
-              <li>
-                <a href="#" className="text-foreground/80 hover:text-foreground transition-colors">
-                  Политика обработки персональных данных
+                  <ExternalLink className="h-3 w-3" />
                 </a>
               </li>
             </ul>
