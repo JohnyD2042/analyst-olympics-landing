@@ -644,13 +644,14 @@ function Participation() {
         </div>
 
         <div className="mt-12 flex justify-center">
-          <button
-            onClick={() => scrollToId("apply")}
+          <a
+            href={anchorHref("apply")}
+            onClick={(e) => onAnchorClick(e, "apply")}
             className="inline-flex items-center gap-2 h-12 px-7 rounded-xl text-base font-semibold bg-gradient-primary text-primary-foreground shadow-glow hover:opacity-95 transition"
           >
             Подать заявку
             <ArrowRight className="h-4 w-4" />
-          </button>
+          </a>
         </div>
       </div>
     </section>
@@ -1004,12 +1005,14 @@ function Footer() {
             <ul className="mt-4 space-y-2.5 text-sm">
               {NAV.map((n) => (
                 <li key={n.id}>
-                  <button
+                  <a
+                    href={anchorHref(n.id)}
+                    onClick={(e) => onAnchorClick(e, n.id)}
                     onClick={() => scrollToId(n.id)}
                     className="text-foreground/80 hover:text-foreground transition-colors"
                   >
                     {n.label}
-                  </button>
+                  </a>
                 </li>
               ))}
             </ul>
