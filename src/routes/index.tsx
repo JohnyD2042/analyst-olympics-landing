@@ -409,7 +409,7 @@ function NominationCard({
           {description}
         </p>
         <div className="mt-5 pt-4 border-t border-border text-xs text-muted-foreground">
-          Серебро и бронза — медали, продвижение в рейтинге, признание
+          Серебро и бронза — медали, продвижение в рейтинге, слава
         </div>
       </div>
     </div>
