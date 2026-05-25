@@ -406,7 +406,7 @@ function NominationCard({
         </div>
         <h4 className="mt-5 font-display font-bold text-lg leading-snug min-h-[3.5rem]">{title}</h4>
         <div className="mt-2 text-xs uppercase tracking-wider text-muted-foreground">
-          Топ-1
+          ТОП-1
         </div>
         <div className="font-display font-extrabold text-3xl text-gradient-gold mt-1">
           {prize}
@@ -416,7 +416,7 @@ function NominationCard({
         </p>
         <div className="mt-4 h-px w-full bg-border" />
         <p className="mt-4 text-sm text-muted-foreground">
-          Топ-2 и Топ-3: признание и место в рейтинге
+          ТОП-2 и ТОП-3: признание и место в рейтинге
         </p>
       </div>
     </div>
