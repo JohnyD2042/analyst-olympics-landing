@@ -352,19 +352,16 @@ function Awards() {
               tier="gold"
               title="Лучшая идея по акциям"
               prize="500 000 ₽"
-              description="Золотая медаль и денежный приз"
             />
             <NominationCard
               tier="primary"
-              title="Лучшая идея по БПИФ"
+              title="Лучшая идея на рынке коллективных инвестиций"
               prize="350 000 ₽"
-              description="Золотая медаль и денежный приз"
             />
             <NominationCard
               tier="bronze"
               title="Лучшая идея по OTC"
               prize="50 000 ₽"
-              description="Золотая медаль и денежный приз"
             />
           </div>
         </div>
@@ -388,12 +385,10 @@ function NominationCard({
   tier,
   title,
   prize,
-  description,
 }: {
   tier: "gold" | "primary" | "bronze";
   title: string;
   prize: string;
-  description: string;
 }) {
   const tierStyle =
     tier === "gold"
@@ -410,18 +405,12 @@ function NominationCard({
           <Medal className="h-5 w-5 text-silver" />
           <Award className="h-5 w-5 text-bronze" />
         </div>
-        <h4 className="mt-5 font-display font-bold text-xl">{title}</h4>
+        <h4 className="mt-5 font-display font-bold text-lg leading-snug min-h-[3.5rem]">{title}</h4>
         <div className="mt-2 text-xs uppercase tracking-wider text-muted-foreground">
           1 место
         </div>
         <div className="font-display font-extrabold text-3xl text-gradient-gold mt-1">
           {prize}
-        </div>
-        <p className="mt-4 text-sm text-muted-foreground leading-relaxed">
-          {description}
-        </p>
-        <div className="mt-5 pt-4 border-t border-border text-xs text-muted-foreground">
-          Серебро и бронза — медали, продвижение в рейтинге, слава
         </div>
       </div>
     </div>
