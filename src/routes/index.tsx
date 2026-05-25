@@ -222,7 +222,7 @@ function Hero() {
   return (
     <section
       id="about"
-      className="relative pt-28 pb-12 sm:pt-36 sm:pb-20 overflow-hidden bg-gradient-hero"
+      className="relative pt-28 pb-12 sm:pt-36 sm:pb-20 overflow-hidden bg-gradient-hero scroll-mt-24"
     >
       <div className="absolute inset-0 bg-grid opacity-60 [mask-image:radial-gradient(ellipse_at_center,black,transparent_70%)]" />
 
@@ -297,7 +297,7 @@ function Hero() {
 function Awards() {
   const months = ["Июль", "Август", "Сентябрь", "Октябрь", "Ноябрь", "Декабрь"];
   return (
-    <section id="awards" className="relative py-12 sm:py-16">
+    <section id="awards" className="relative py-12 sm:py-16 scroll-mt-24">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center">
         <SectionEyebrow icon={<Trophy className="h-3.5 w-3.5" />}>Награды</SectionEyebrow>
         <h2 className="mt-3 font-display font-bold text-3xl sm:text-5xl">Призовой фонд</h2>
@@ -456,7 +456,7 @@ function Format() {
     },
   ];
   return (
-    <section id="format" className="py-12 sm:py-16">
+    <section id="format" className="py-12 sm:py-16 scroll-mt-24">
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 text-center">
         <SectionEyebrow icon={<Sparkles className="h-3.5 w-3.5" />}>Формат</SectionEyebrow>
         <h2 className="mt-3 font-display font-bold text-3xl sm:text-5xl">
@@ -560,7 +560,7 @@ function Participation() {
     },
   ];
   return (
-    <section id="participation" className="py-12 sm:py-16">
+    <section id="participation" className="py-12 sm:py-16 scroll-mt-24">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center">
         <SectionEyebrow icon={<Crown className="h-3.5 w-3.5" />}>Участие</SectionEyebrow>
         <h2 className="mt-3 font-display font-bold text-3xl sm:text-5xl">
@@ -701,7 +701,7 @@ const FAQ_ITEMS = [
 
 function Faq() {
   return (
-    <section id="faq" className="py-12 sm:py-16">
+    <section id="faq" className="py-12 sm:py-16 scroll-mt-24">
       <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 text-center">
         <SectionEyebrow icon={<Sparkles className="h-3.5 w-3.5" />}>FAQ</SectionEyebrow>
         <h2 className="mt-3 font-display font-bold text-3xl sm:text-5xl">
