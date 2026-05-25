@@ -746,6 +746,12 @@ const applicationSchema = z.object({
     .trim()
     .min(1, { message: "Укажите ссылку на ваш ресурс" })
     .max(500, { message: "Слишком длинное значение" }),
+  email: z
+    .string()
+    .trim()
+    .min(1, { message: "Укажите email для связи" })
+    .max(254, { message: "Email слишком длинный" })
+    .email({ message: "Введите корректный email" }),
 });
 
 function Apply() {
@@ -773,6 +779,7 @@ function ApplyForm() {
   const [name, setName] = useState("");
   const [status, setStatus] = useState<"" | "Профучастник" | "Частный аналитик">("Профучастник");
   const [link, setLink] = useState("");
+  const [email, setEmail] = useState("");
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [submitting, setSubmitting] = useState(false);
   const [success, setSuccess] = useState(false);
@@ -781,7 +788,7 @@ function ApplyForm() {
   const onSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setErrors({});
-    const parsed = applicationSchema.safeParse({ name, status, link });
+    const parsed = applicationSchema.safeParse({ name, status, link, email });
     if (!parsed.success) {
       const errs: Record<string, string> = {};
       for (const issue of parsed.error.issues) {
@@ -796,6 +803,7 @@ function ApplyForm() {
       name: parsed.data.name,
       status: parsed.data.status,
       link: parsed.data.link,
+      email: parsed.data.email,
     });
     setSubmitting(false);
     if (error) {
@@ -806,6 +814,7 @@ function ApplyForm() {
     setName("");
     setStatus("Профучастник");
     setLink("");
+    setEmail("");
     toast.success("Спасибо! Заявка отправлена.");
   };
 
@@ -885,6 +894,21 @@ function ApplyForm() {
           placeholder="https://t.me/your_channel или @your_nickname"
           className="w-full h-12 px-4 rounded-lg bg-background border border-border text-foreground placeholder:text-muted-foreground/60 focus:outline-none focus:ring-2 focus:ring-ring focus:border-transparent transition"
           aria-invalid={!!errors.link}
+          required
+        />
+      </Field>
+
+      <Field id="email" label="E-mail для связи" error={errors.email}>
+        <input
+          id="email"
+          type="email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          placeholder="you@example.com"
+          autoComplete="email"
+          inputMode="email"
+          className="w-full h-12 px-4 rounded-lg bg-background border border-border text-foreground placeholder:text-muted-foreground/60 focus:outline-none focus:ring-2 focus:ring-ring focus:border-transparent transition"
+          aria-invalid={!!errors.email}
           required
         />
       </Field>
