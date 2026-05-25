@@ -1016,12 +1016,12 @@ function Footer() {
               </li>
               <li>
                 <a
-                  href="https://invest-idei.ru/uploads/6a11042a948c7.pdf"
+                  href="https://invest-idei.ru/uploads/6a144be170392.pdf"
                   target="_blank"
                   rel="noreferrer noopener"
                   className="text-foreground/80 hover:text-foreground transition-colors inline-flex items-center gap-1.5"
                 >
-                  Правила конкурса
+                  Регламент конкурса
                   <ExternalLink className="h-3 w-3" />
                 </a>
               </li>
