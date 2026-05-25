@@ -12,4 +12,12 @@ export default defineConfig({
   tanstackStart: {
     server: { entry: "server" },
   },
+
+  preview: {
+    // Specify allowed hostnames
+    allowedHosts: ['konkurs2026.invest-idei.ru'],
+
+    // OR: Set to true to allow all hostnames (useful for some dev/proxy environments)
+    // allowedHosts: true
+  }
 });
