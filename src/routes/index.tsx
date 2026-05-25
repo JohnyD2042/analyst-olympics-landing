@@ -116,7 +116,6 @@ function ExamplesButton({
       rel="noreferrer noopener"
       className={`group inline-flex items-center justify-center gap-2 ${sizeCls} rounded-xl font-semibold bg-[oklch(0.13_0.02_260)] text-[oklch(0.85_0.14_85)] border border-[oklch(0.85_0.14_85)]/40 hover:border-[oklch(0.85_0.14_85)] hover:bg-[oklch(0.16_0.025_260)] transition-colors ${className}`}
     >
-      <Sparkles className="h-4 w-4" />
       <span>Примеры идей</span>
       <ExternalLink className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" />
     </a>
@@ -143,7 +142,7 @@ function Header() {
             <Crown className="h-5 w-5 text-primary-foreground" />
           </span>
           <span className="font-display font-bold tracking-tight text-base sm:text-lg">
-            Олимпиада <span className="text-gradient-primary">2026</span>
+            Конкурс аналитиков <span className="text-gradient-primary">2026</span>
           </span>
         </a>
 
@@ -168,7 +167,6 @@ function Header() {
             className="inline-flex items-center gap-1.5 px-4 h-10 rounded-lg text-sm font-semibold bg-gradient-primary text-primary-foreground shadow-glow hover:opacity-95 transition"
           >
             Подать заявку
-            <ArrowRight className="h-4 w-4" />
           </a>
         </div>
 
