@@ -65,6 +65,16 @@ function scrollToId(id: string) {
   el.scrollIntoView({ behavior: "smooth", block: "start" });
 }
 
+function anchorHref(id: string) {
+  return `#${id}`;
+}
+
+function onAnchorClick(e: React.MouseEvent<HTMLAnchorElement>, id: string) {
+  e.preventDefault();
+  scrollToId(id);
+  window.history.replaceState(null, "", anchorHref(id));
+}
+
 function LandingPage() {
   return (
     <div className="min-h-screen bg-background text-foreground">
@@ -123,8 +133,9 @@ function Header() {
       className="fixed top-0 inset-x-0 z-50 backdrop-blur-xl bg-background/85 border-b border-border"
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-4">
-        <button
-          onClick={() => scrollToId("about")}
+        <a
+          href={anchorHref("about")}
+          onClick={(e) => onAnchorClick(e, "about")}
           className="flex items-center gap-2 group"
           aria-label="Олимпиада аналитиков 2026"
         >
@@ -134,29 +145,31 @@ function Header() {
           <span className="font-display font-bold tracking-tight text-base sm:text-lg">
             Олимпиада <span className="text-gradient-primary">2026</span>
           </span>
-        </button>
+        </a>
 
         <nav className="hidden lg:flex items-center gap-7">
           {NAV.map((n) => (
-            <button
+            <a
               key={n.id}
-              onClick={() => scrollToId(n.id)}
+              href={anchorHref(n.id)}
+              onClick={(e) => onAnchorClick(e, n.id)}
               className="text-sm text-muted-foreground hover:text-foreground transition-colors"
             >
               {n.label}
-            </button>
+            </a>
           ))}
         </nav>
 
         <div className="hidden md:flex items-center gap-2">
           <ExamplesButton size="sm" />
-          <button
-            onClick={() => scrollToId("apply")}
+          <a
+            href={anchorHref("apply")}
+            onClick={(e) => onAnchorClick(e, "apply")}
             className="inline-flex items-center gap-1.5 px-4 h-10 rounded-lg text-sm font-semibold bg-gradient-primary text-primary-foreground shadow-glow hover:opacity-95 transition"
           >
             Подать заявку
             <ArrowRight className="h-4 w-4" />
-          </button>
+          </a>
         </div>
 
         <button
@@ -173,28 +186,28 @@ function Header() {
         <div className="lg:hidden border-t border-border bg-background/95 backdrop-blur-xl">
           <div className="px-4 py-4 flex flex-col gap-1">
             {NAV.map((n) => (
-              <button
+              <a
                 key={n.id}
+                href={anchorHref(n.id)}
                 onClick={() => {
                   setOpen(false);
-                  setTimeout(() => scrollToId(n.id), 50);
                 }}
                 className="text-left px-3 py-3 rounded-md text-sm text-foreground hover:bg-surface"
               >
                 {n.label}
-              </button>
+              </a>
             ))}
             <div className="grid grid-cols-2 gap-2 pt-3">
               <ExamplesButton className="w-full" />
-              <button
+              <a
+                href={anchorHref("apply")}
                 onClick={() => {
                   setOpen(false);
-                  setTimeout(() => scrollToId("apply"), 50);
                 }}
                 className="inline-flex items-center justify-center gap-1.5 h-11 rounded-lg text-sm font-semibold bg-gradient-primary text-primary-foreground"
               >
                 Подать заявку
-              </button>
+              </a>
             </div>
           </div>
         </div>
@@ -264,13 +277,14 @@ function Hero() {
           className="mt-8 flex flex-col sm:flex-row gap-3 justify-center animate-slide-up"
           style={{ animationDelay: "240ms" }}
         >
-          <button
-            onClick={() => scrollToId("apply")}
+          <a
+            href={anchorHref("apply")}
+            onClick={(e) => onAnchorClick(e, "apply")}
             className="inline-flex items-center justify-center gap-2 h-12 px-7 rounded-xl text-base font-semibold bg-gradient-primary text-primary-foreground shadow-glow hover:opacity-95 transition"
           >
             Подать заявку
             <ArrowRight className="h-4 w-4" />
-          </button>
+          </a>
           <ExamplesButton size="lg" />
         </div>
       </div>
