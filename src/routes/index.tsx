@@ -963,7 +963,7 @@ function Footer() {
                 <Crown className="h-5 w-5 text-primary-foreground" />
               </span>
               <span className="font-display font-bold text-lg">
-                Олимпиада <span className="text-gradient-primary">2026</span>
+                Конкурс аналитиков <span className="text-gradient-primary">2026</span>
               </span>
             </div>
             <p className="mt-4 text-sm text-muted-foreground max-w-md">
