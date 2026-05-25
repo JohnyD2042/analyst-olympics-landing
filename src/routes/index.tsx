@@ -700,10 +700,6 @@ const FAQ_ITEMS = [
 ];
 
 function Faq() {
-  const [open, setOpen] = useState<number[]>([]);
-  const toggle = (i: number) =>
-    setOpen((prev) => (prev.includes(i) ? prev.filter((x) => x !== i) : [...prev, i]));
-
   return (
     <section id="faq" className="py-12 sm:py-16">
       <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 text-center">
@@ -713,32 +709,23 @@ function Faq() {
         </h2>
 
         <div className="mt-10 space-y-3 text-left">
-          {FAQ_ITEMS.map((item, i) => {
-            const isOpen = open.includes(i);
-            return (
-              <div
-                key={item.q}
-                className="rounded-xl border border-border bg-surface/60 overflow-hidden"
-              >
-                <button
-                  type="button"
-                  onClick={() => toggle(i)}
-                  className="w-full flex items-center justify-between gap-4 px-5 py-4 text-left"
-                  aria-expanded={isOpen}
-                >
-                  <h3 className="font-semibold text-base sm:text-lg">{item.q}</h3>
-                  <span className="grid place-items-center w-8 h-8 rounded-lg border border-border shrink-0">
-                    {isOpen ? <Minus className="h-4 w-4" /> : <Plus className="h-4 w-4" />}
-                  </span>
-                </button>
-                {isOpen && (
-                  <p className="px-5 pb-5 text-sm sm:text-[15px] text-muted-foreground leading-relaxed">
-                    {item.a}
-                  </p>
-                )}
-              </div>
-            );
-          })}
+          {FAQ_ITEMS.map((item) => (
+            <details
+              key={item.q}
+              className="group rounded-xl border border-border bg-surface/60 overflow-hidden"
+            >
+              <summary className="flex cursor-pointer list-none items-center justify-between gap-4 px-5 py-4 text-left [&::-webkit-details-marker]:hidden">
+                <h3 className="font-semibold text-base sm:text-lg">{item.q}</h3>
+                <span className="grid place-items-center w-8 h-8 rounded-lg border border-border shrink-0">
+                  <Plus className="h-4 w-4 group-open:hidden" />
+                  <Minus className="hidden h-4 w-4 group-open:block" />
+                </span>
+              </summary>
+              <p className="px-5 pb-5 text-sm sm:text-[15px] text-muted-foreground leading-relaxed">
+                {item.a}
+              </p>
+            </details>
+          ))}
         </div>
       </div>
     </section>
@@ -1008,7 +995,6 @@ function Footer() {
                   <a
                     href={anchorHref(n.id)}
                     onClick={(e) => onAnchorClick(e, n.id)}
-                    onClick={() => scrollToId(n.id)}
                     className="text-foreground/80 hover:text-foreground transition-colors"
                   >
                     {n.label}
