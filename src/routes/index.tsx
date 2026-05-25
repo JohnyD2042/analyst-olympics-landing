@@ -237,14 +237,15 @@ function Hero() {
           className="mt-6 mx-auto max-w-4xl font-display font-extrabold leading-[1.05] tracking-tight text-[2rem] sm:text-6xl lg:text-7xl animate-slide-up"
           style={{ animationDelay: "60ms" }}
         >
-          Создаем сильную <span className="text-gradient-primary">инвестиционную аналитику</span>
+          Сделаем <span className="text-gradient-primary">финансовую аналитику</span>{" "}
+          великой снова
         </h1>
 
         <p
           className="mt-5 mx-auto max-w-2xl text-base sm:text-xl text-muted-foreground animate-slide-up"
           style={{ animationDelay: "120ms" }}
         >
-          Впишите свое имя в историю фондового рынка
+          Открытый конкурс аналитики по российскому фондовому рынку
         </p>
 
         <div
