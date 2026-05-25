@@ -311,7 +311,7 @@ function Awards() {
                 Распределяем среди лучших аналитиков
               </div>
               <div className="mt-2 text-base sm:text-lg font-semibold">
-                6 ежемесячных награждений × 900 000 ₽
+                6 ежемесячных награждений × 900&nbsp;000&nbsp;₽
               </div>
             </div>
 
