@@ -1056,13 +1056,14 @@ function MobileApplyBar() {
   if (!show) return null;
   return (
     <div className="md:hidden fixed bottom-3 inset-x-3 z-40">
-      <button
-        onClick={() => scrollToId("apply")}
+      <a
+        href={anchorHref("apply")}
+        onClick={(e) => onAnchorClick(e, "apply")}
         className="w-full inline-flex items-center justify-center gap-2 h-12 rounded-xl text-sm font-semibold bg-gradient-primary text-primary-foreground shadow-glow"
       >
         Подать заявку
         <ArrowRight className="h-4 w-4" />
-      </button>
+      </a>
     </div>
   );
 }
