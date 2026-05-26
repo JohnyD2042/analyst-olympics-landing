@@ -9,20 +9,16 @@ import { defineConfig } from "@lovable.dev/vite-tanstack-config";
 // Redirect TanStack Start's bundled server entry to src/server.ts (our SSR error wrapper).
 // @cloudflare/vite-plugin builds from this — wrangler.jsonc main alone is insufficient.
 export default defineConfig({
-
-  server: {
-    allowedHosts: true
-  },
-
   tanstackStart: {
     server: { entry: "server" },
   },
 
-  preview: {
-    // Specify allowed hostnames
-    allowedHosts: ['konkurs2026.invest-idei.ru', 'frontend-web'],
-
-    // OR: Set to true to allow all hostnames (useful for some dev/proxy environments)
-    // allowedHosts: true
-  }
+  vite: {
+    server: {
+      allowedHosts: true,
+    },
+    preview: {
+      allowedHosts: ['konkurs2026.invest-idei.ru', 'frontend-web'],
+    },
+  },
 });
