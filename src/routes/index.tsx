@@ -27,13 +27,13 @@ import { Toaster } from "@/components/ui/sonner";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Олимпиада аналитиков 2026 — конкурс инвестиционных идей" },
+      { title: "Конкурс аналитиков 2026 — конкурс инвестиционных идей" },
       {
         name: "description",
         content:
           "Открытый конкурс аналитиков по российскому фондовому рынку с призовым фондом 5 400 000 рублей.",
       },
-      { property: "og:title", content: "Олимпиада аналитиков 2026" },
+      { property: "og:title", content: "Конкурс аналитиков 2026" },
       {
         property: "og:description",
         content:
@@ -136,7 +136,7 @@ function Header() {
           href={anchorHref("about")}
           onClick={(e) => onAnchorClick(e, "about")}
           className="flex items-center gap-2 group"
-          aria-label="Олимпиада аналитиков 2026"
+          aria-label="Конкурс аналитиков 2026"
         >
           <span className="grid place-items-center w-9 h-9 rounded-lg bg-gradient-primary shadow-glow">
             <Crown className="h-5 w-5 text-primary-foreground" />
