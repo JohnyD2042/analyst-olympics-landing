@@ -75,8 +75,8 @@ task('bun:install', function () {
 
 task('npm:restart', function () {
     cd('/srv/konkurs_landing/current');
-    run('pm2 delete 1');
-    run('pm2 start npm --name "konkurs_landing" -- run preview');
+    // run('pm2 delete 1');
+    //run('pm2 start npm --name "konkurs_landing" -- run preview');
 });
 // Hooks
 
