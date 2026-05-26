@@ -1016,7 +1016,7 @@ function Footer() {
               </li>
               <li>
                 <a
-                  href="https://invest-idei.ru/uploads/6a14ff0a2a04c.pdf"
+                  href="https://invest-idei.ru/uploads/6a1502b95023c.pdf"
                   target="_blank"
                   rel="noreferrer noopener"
                   className="text-foreground/80 hover:text-foreground transition-colors inline-flex items-center gap-1.5"
