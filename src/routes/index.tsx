@@ -56,7 +56,7 @@ const NAV = [
   { id: "faq", label: "FAQ" },
 ] as const;
 
-const EXAMPLES_URL = "https://invest-idei.ru";
+const EXAMPLES_URL = "https://invest-idei.ru/ideas?konkurs=1";
 const MOEX_URL = "https://www.moex.com";
 
 function scrollToId(id: string) {

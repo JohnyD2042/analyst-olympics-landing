@@ -24,6 +24,7 @@ set('default_timeout', 6000);
 // Prod
 host('84.38.177.115')
     ->setPort(52211)
+    ->set('target', '5a539ed7efa7b366063293bad3abfbfb2a4b3ce9')
     ->set('stage', 'prod')
     ->set('remote_user', 'root')
     ->set('deploy_path', '/srv/konkurs_landing')
@@ -63,7 +64,7 @@ task('deploy', [
     // 'npm:install',
     'bun:install',
     'deploy:publish',
-    //'npm:restart',
+    'npm:restart',
     'deploy:owner'
 ]);
 
@@ -75,8 +76,9 @@ task('bun:install', function () {
 
 task('npm:restart', function () {
     cd('/srv/konkurs_landing/current');
-    // run('pm2 delete 1');
-    //run('pm2 start npm --name "konkurs_landing" -- run preview');
+    run('cp dist/server/index.js dist/server/server.js');
+    run('pm2 delete konkurs_landing');
+    run('pm2 start npm --name "konkurs_landing" -- run preview');
 });
 // Hooks
 
