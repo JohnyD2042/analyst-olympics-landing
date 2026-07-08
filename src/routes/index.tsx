@@ -373,7 +373,7 @@ function Awards() {
           </span>
           <span className="text-sm sm:text-base">
             Ближайшее награждение —{" "}
-            <span className="font-semibold">1 июля 2026 года</span>
+            <span className="font-semibold">1 августа 2026 года</span>
           </span>
         </div>
       </div>

@@ -24,7 +24,7 @@ set('default_timeout', 6000);
 // Prod
 host('84.38.177.115')
     ->setPort(52211)
-    ->set('target', '5a539ed7efa7b366063293bad3abfbfb2a4b3ce9')
+    // ->set('target', '5a539ed7efa7b366063293bad3abfbfb2a4b3ce9')
     ->set('stage', 'prod')
     ->set('remote_user', 'root')
     ->set('deploy_path', '/srv/konkurs_landing')
