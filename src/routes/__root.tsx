@@ -6,6 +6,7 @@ import {
   useRouter,
   HeadContent,
   Scripts,
+  type ErrorComponentProps,
 } from "@tanstack/react-router";
 
 import appCss from "../styles.css?url";
@@ -32,7 +33,7 @@ function NotFoundComponent() {
   );
 }
 
-function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
+function ErrorComponent({ error, reset }: ErrorComponentProps) {
   console.error(error);
   const router = useRouter();
 
@@ -82,8 +83,6 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "twitter:site", content: "@Lovable" },
       { name: "twitter:title", content: "Конкурс аналитиков Invest-Idei" },
       { name: "twitter:description", content: "Конкурс фондовой аналитики" },
-      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/32cdd4ae-e4d5-41c0-bf0c-31e744a22488/id-preview-38a9b8db--d9e604aa-f7d9-4653-92d9-91c48891aab4.lovable.app-1778723480955.png" },
-      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/32cdd4ae-e4d5-41c0-bf0c-31e744a22488/id-preview-38a9b8db--d9e604aa-f7d9-4653-92d9-91c48891aab4.lovable.app-1778723480955.png" },
     ],
     links: [
       {

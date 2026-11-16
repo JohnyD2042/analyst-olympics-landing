@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
 import { z } from "zod";
+import { formatNextAwardDate } from "@/lib/award-date";
 import {
   Menu,
   X,
@@ -56,8 +57,8 @@ const NAV = [
   { id: "faq", label: "FAQ" },
 ] as const;
 
-const EXAMPLES_URL = "https://invest-idei.ru/ideas?konkurs=1";
-const MOEX_URL = "https://www.moex.com";
+const EXAMPLES_URL = "https://invest-idei.ru/unauthorized?pro=0";
+const MOEX_URL = "https://www.moex.com/n100378";
 
 function scrollToId(id: string) {
   const el = document.getElementById(id);
@@ -74,6 +75,7 @@ function onAnchorClick(e: React.MouseEvent<HTMLAnchorElement>, id: string) {
   scrollToId(id);
   window.history.replaceState(null, "", anchorHref(id));
 }
+
 
 function LandingPage() {
   return (
@@ -293,7 +295,6 @@ function Hero() {
 /* ---------- AWARDS ---------- */
 
 function Awards() {
-  const months = ["Июль", "Август", "Сентябрь", "Октябрь", "Ноябрь", "Декабрь"];
   return (
     <section id="awards" className="relative py-12 sm:py-16 scroll-mt-24">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center">
@@ -302,7 +303,7 @@ function Awards() {
 
         <div className="mt-10 rounded-3xl border border-border bg-surface p-6 sm:p-10 shadow-elegant overflow-hidden relative text-left">
           <div className="absolute -top-24 -right-24 h-72 w-72 rounded-full bg-gradient-gold opacity-20 blur-3xl" />
-          <div className="relative grid lg:grid-cols-2 gap-8 items-center">
+          <div className="relative grid lg:grid-cols-2 gap-4 lg:gap-8 items-center">
             <div className="text-center lg:text-left">
               <div className="mt-2 font-display font-extrabold tracking-tight text-gradient-gold leading-none whitespace-nowrap text-[clamp(2rem,11vw,5rem)] lg:text-[clamp(2rem,5.2vw,5rem)]">
                 5&nbsp;400&nbsp;000&nbsp;₽
@@ -310,32 +311,31 @@ function Awards() {
               <div className="mt-3 text-sm sm:text-base text-muted-foreground">
                 Распределяем среди лучших аналитиков
               </div>
-              <div className="mt-2 text-base sm:text-lg font-semibold">
-                6 ежемесячных награждений × 900&nbsp;000&nbsp;₽
-              </div>
             </div>
 
-            <div>
-              <div className="grid grid-cols-6 gap-1.5">
-                {months.map((m, i) => (
-                  <div
-                    key={m}
-                    className="group relative h-24 rounded-lg border border-border bg-background/40 overflow-hidden"
-                  >
-                    <div
-                      className="absolute inset-x-0 bottom-0 bg-gradient-gold opacity-90"
-                      style={{ height: `${60 + i * 5}%` }}
-                    />
-                    <div className="absolute inset-0 flex flex-col justify-end p-2">
-                      <div className="text-[10px] font-semibold text-background/90">900к</div>
-                      <div className="text-[10px] text-background/80">{m}</div>
-                    </div>
+            <div className="rounded-2xl border border-gold/20 bg-background/30 px-5 py-5 sm:px-6 sm:py-6">
+              <div className="flex items-center justify-center gap-3 sm:gap-4">
+                <div className="text-center">
+                  <div className="font-display font-bold leading-none text-gradient-gold text-[clamp(2rem,5vw,3rem)]">
+                    6
                   </div>
-                ))}
+                  <div className="mt-1.5 text-[10px] sm:text-xs font-medium uppercase tracking-[0.2em] text-muted-foreground">
+                    месяцев
+                  </div>
+                </div>
+                <div className="font-display font-light text-gold/60 text-[clamp(1.25rem,3vw,1.75rem)] leading-none">
+                  ×
+                </div>
+                <div className="text-center">
+                  <div className="font-display font-bold leading-none text-gradient-gold text-[clamp(1.5rem,4vw,2.25rem)] whitespace-nowrap">
+                    900&nbsp;000&nbsp;₽
+                  </div>
+                  <div className="mt-1.5 text-[10px] sm:text-xs font-medium uppercase tracking-[0.2em] text-muted-foreground">
+                    каждый месяц
+                  </div>
+                </div>
               </div>
-              <div className="mt-4 h-2 w-full rounded-full bg-background/60 overflow-hidden">
-                <div className="h-full w-full bg-gradient-gold" />
-              </div>
+              <div className="mt-4 h-px w-full bg-gradient-gold opacity-60" />
             </div>
           </div>
         </div>
@@ -373,7 +373,7 @@ function Awards() {
           </span>
           <span className="text-sm sm:text-base">
             Ближайшее награждение —{" "}
-            <span className="font-semibold">1 августа 2026 года</span>
+            <span className="font-semibold">{formatNextAwardDate()}</span>
           </span>
         </div>
       </div>
@@ -669,7 +669,7 @@ const FAQ_ITEMS = [
   },
   {
     q: "Какие идеи принимаются?",
-    a: "Можно присылать инвестиционные идеи на любые акции и БПИФ, торгуемые на Московской бирже. Можно делать идеи на отдельные акции, а также предлагать в качестве идеи портфель из нескольких акций. Можно присылать идеи на «Лонг» и/или на «Шорт».",
+    a: "Можно присылать инвестиционные идеи на инструменты Московской биржи: 1) акции, допущенные к организованным торгам; 2) акции, с которыми возможно заключение внебиржевых сделок; 3) инструменты рынка коллективных инвестиций (БПИФ, ОПИФ, ИПИФ, ЗПИФ). Можно делать идеи на отдельные инструменты, а также предлагать в качестве идеи портфель из нескольких инструментов. Можно присылать идеи на «Лонг» и/или на «Шорт».",
   },
   {
     q: "Нужно ли отправлять каждую идею вручную?",
