@@ -536,21 +536,18 @@ function Participation() {
                     <svg className="participant-pass-emblem" viewBox="0 0 64 64" fill="none" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                       {c.accent === "silver" ? (
                         <>
-                          {/* Executive chair: headrest, stitched back, armrests and caster base. */}
-                          <rect x="24" y="4" width="16" height="7" rx="3" />
-                          <path d="M28 11v3m8-3v3M23 14h18a3 3 0 0 1 3 3l-2 19H22l-2-19a3 3 0 0 1 3-3Z" />
-                          <path d="M26 19v10m12-10v10M25 32h14M23 36l-3 4h24l-3-4M20 40v3h24v-3" />
-                          <path d="M21 33h-6v-8h5m23 8h6v-8h-5M13 24h8m22 0h8M15 33v7h5m29-7v7h-5" />
-                          <path d="M30 43v7h4v-7M32 50v6m0-6-15 7m15-7 15 7M32 50l-7 9m7-9 7 9" />
-                          <path d="M14 57h6v3h-6Zm30 0h6v3h-6ZM23 59h4m10 0h4M30 57h4v3h-4Z" />
+                          {/* Front-facing office chair: broad padded back and simple wheeled base. */}
+                          <rect x="21" y="7" width="22" height="27" rx="7" />
+                          <rect x="18" y="36" width="28" height="7" rx="3.5" />
+                          <path d="M18 28h-5v11h5m28-11h5v11h-5M32 43v10m-13 4 13-4 13 4" />
+                          <circle cx="19" cy="58" r="2" />
+                          <circle cx="45" cy="58" r="2" />
                         </>
                       ) : (
                         <>
-                          {/* Folding beach chair: striped sling, angled frame and cross braces. */}
-                          <path d="m13 7 7-2h22l-7 2H13Zm0 0 9 31h24L35 7M20 5l9 30M22 38l7-3h24l-7 3" />
-                          <path d="m19 11 7 23m0-23 7 20m-1-20 7 20M25 39l-9 18m29-19 9 19M15 57h7m29 0h7" />
-                          <path d="m17 22 7 32m20-28-19 28M20 23l30-3m-6 7 7-7M17 22l3 1m25 10 8 24M26 54h25" />
-                          <circle cx="25" cy="45" r="1.5" />
+                          {/* Front-facing beach chair: plain fabric sling and folding X frame. */}
+                          <path d="M18 8h28l-3 27H21L18 8Zm10 0v27m8-27v27M21 35l-4 7h30l-4-7" />
+                          <path d="M17 42l29 16M47 42 18 58M14 58h8m20 0h8M17 30h-5v12h5m30-12h5v12h-5" />
                         </>
                       )}
                     </svg>
