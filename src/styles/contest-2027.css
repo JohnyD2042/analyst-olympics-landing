@@ -98,15 +98,31 @@
 .prize-fan .prize-fan-card[data-hot]::after { transform: translateX(35%); }
 .prize-fan .prize-fan-card:hover { transform: none; }
 .prize-fan[data-open] .prize-fan-card:hover { transform: translate(calc(var(--d) * var(--spread)), calc(var(--d) * var(--d) * 14px - 26px)) rotate(calc(var(--d) * 11deg)) scale(1.07); }
-.prize-fan .contest-prize-content { justify-content: flex-start; gap: 6px; }
-.prize-fan .contest-prize-amount { font-size: 30px; }
+.prize-fan .contest-prize-content { justify-content: center; align-items: center; text-align: center; gap: 14px; }
+/* engraved look: recessed dark ink with a light lower lip */
+.prize-fan .contest-prize-place,
+.prize-fan .contest-prize-amount {
+  color: color-mix(in srgb, var(--metal) 45%, var(--contest-metal-ink));
+  text-shadow:
+    0 1px 0 color-mix(in srgb, var(--contest-metal-light) 60%, transparent),
+    0 -1px 0 color-mix(in srgb, var(--contest-metal-ink) 35%, transparent);
+}
+.prize-fan .contest-prize-place { text-transform: uppercase; letter-spacing: .14em; font-size: 15px; }
+.prize-fan-trophy {
+  width: 64px; height: 64px;
+  color: color-mix(in srgb, var(--metal) 45%, var(--contest-metal-ink));
+  filter: drop-shadow(0 1px 0 color-mix(in srgb, var(--contest-metal-light) 60%, transparent)) drop-shadow(0 -1px 0 color-mix(in srgb, var(--contest-metal-ink) 35%, transparent));
+}
+.prize-fan .contest-prize-amount { font-size: 27px; }
 @media (max-width: 639px) {
   .prize-fan { width: 128px; height: 176px; --spread: 84px; }
   .prize-fan-wrap { padding: 40px 0 44px; }
   .prize-fan .contest-prize { padding: 16px; }
   .prize-fan .contest-prize-place { font-size: 14px; }
-  .prize-fan .contest-prize-amount { font-size: 17px; }
-  .prize-fan .contest-prize-place { font-size: 12px; }
+  .prize-fan .contest-prize-amount { font-size: 15px; }
+  .prize-fan .contest-prize-place { font-size: 10px; letter-spacing: .1em; }
+  .prize-fan-trophy { width: 38px; height: 38px; }
+  .prize-fan .contest-prize-content { gap: 8px; }
 }
 @media (prefers-reduced-motion: reduce) {
   .prize-fan .prize-fan-card { transition: none; }

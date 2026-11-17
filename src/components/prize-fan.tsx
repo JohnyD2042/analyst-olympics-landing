@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import { Trophy } from "lucide-react";
 import metalTexture from "@/assets/award-brushed-metal.jpg";
 
 type Prize = { rank: number; amount: string };
@@ -59,6 +60,7 @@ export function PrizeFan({ prizes }: { prizes: Prize[] }) {
               <img src={metalTexture} alt="" aria-hidden="true" loading="lazy" width={1024} height={1024} className="contest-prize-texture" />
               <div className="contest-prize-content">
                 <h4 className="contest-prize-place">{p.rank}-е место</h4>
+                <Trophy className="prize-fan-trophy" aria-hidden="true" strokeWidth={1.6} />
                 <p className="contest-prize-amount">{p.amount}</p>
               </div>
             </article>
