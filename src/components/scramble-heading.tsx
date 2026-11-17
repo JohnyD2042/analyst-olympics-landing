@@ -19,7 +19,8 @@ export function ScrambleHeading() {
       const text = `${BASE} ${CONTEST_2027.headlineEndings[currentEnding]}`;
       if (timer) clearInterval(timer);
       const start = performance.now();
-      const deadlines = Array.from(text, (_, index) => 180 + index * 24 + Math.random() * 180);
+      const endingStart = BASE.length + 1;
+      const deadlines = Array.from(text, (_, index) => index < endingStart ? 0 : 120 + (index - endingStart) * 45 + Math.random() * 160);
       timer = setInterval(() => {
         const elapsed = performance.now() - start;
         const settled = deadlines.map((end) => elapsed >= end);
