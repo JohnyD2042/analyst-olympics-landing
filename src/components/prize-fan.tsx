@@ -1,6 +1,8 @@
 import { useEffect, useRef, useState } from "react";
 import metalTexture from "@/assets/award-brushed-metal.jpg";
 
+const PLACE_NAMES = ["Первое место", "Второе место", "Третье место"];
+
 type Prize = { rank: number; amount: string };
 
 /** Fan of metal prize cards: stacked at rest, fans out on hover; hovered card lifts to the front. */
@@ -49,7 +51,7 @@ export function PrizeFan({ prizes }: { prizes: Prize[] }) {
             <article
               key={p.rank}
               tabIndex={0}
-              className={`contest-prize contest-prize-${p.rank} prize-fan-card`}
+              className={`contest-prize contest-prize-${p.rank} prize-fan-card font-display`}
               style={{ ["--d" as string]: d, zIndex: isHot ? 5 : i === 1 ? 3 : 2 }}
               data-hot={isHot || undefined}
               onPointerEnter={() => setHot(i)}
@@ -58,7 +60,7 @@ export function PrizeFan({ prizes }: { prizes: Prize[] }) {
             >
               <img src={metalTexture} alt="" aria-hidden="true" loading="lazy" width={1024} height={1024} className="contest-prize-texture" />
               <div className="contest-prize-content">
-                <h4 className="contest-prize-place">{p.rank}-е место</h4>
+                <h4 className="contest-prize-place">{PLACE_NAMES[p.rank - 1]}</h4>
                 <CupIcon rank={p.rank} />
                 <p className="contest-prize-amount">{p.amount}</p>
               </div>
