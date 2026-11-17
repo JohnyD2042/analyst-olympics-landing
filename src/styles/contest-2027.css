@@ -252,6 +252,7 @@
 .contest-2027 .benefit-light[data-on="true"] .benefit-lamp-bulb { background: var(--benefit-bulb-lit); border-color: var(--contest-gold-hi); box-shadow: var(--benefit-bulb-glow); transform: scale(1.08); }
 .contest-2027 .benefit-light[data-on="true"] .benefit-lamp-bulb span { border-color: var(--contest-gold-deep); }
 .contest-2027 .benefit-light[data-on="true"] .benefit-lamp-shade { border-bottom-color: var(--contest-gold-hi); }
+.contest-2027 .benefit-cord-motion { position: absolute; inset: 0; transform-origin: 103px 91px; }
 .contest-2027 .benefit-cord { position: absolute; left: 83px; top: 91px; width: 40px; height: calc(65px + var(--pull-y)); transform: translateX(var(--pull-x)); transform-origin: top center; transition: height .65s cubic-bezier(.2,1.65,.4,1), transform .65s cubic-bezier(.2,1.65,.4,1); }
 .contest-2027 .benefit-cord svg { width: 100%; height: 100%; }
 .contest-2027 .benefit-cord path { fill: none; stroke: var(--silver); stroke-width: 1.5; }
@@ -271,11 +272,8 @@
 .contest-2027 .benefit-light[data-on="true"] .benefit-light-status span { opacity: 1; }
 .contest-2027 .benefit-lamp[data-hint="true"] .benefit-cord { animation: benefit-cord-hint-length 2.6s ease-in-out infinite; }
 .contest-2027 .benefit-lamp[data-hint="true"] .benefit-cord-grab { animation: benefit-cord-hint-pull 2.6s ease-in-out infinite; }
-.contest-2027 .benefit-pull-hint { position: absolute; bottom: 27px; left: 0; right: 0; text-align: center; font-size: 12px; color: var(--contest-gold-hi); pointer-events: none; }
-.contest-2027 .benefit-pull-hint > span { display: inline-block; margin-right: 5px; font-size: 18px; animation: benefit-hint-arrow 2.6s ease-in-out infinite; }
 @keyframes benefit-cord-hint-length { 0%, 12%, 55%, 100% { height: 65px; } 30% { height: 95px; } 43% { height: 61px; } }
 @keyframes benefit-cord-hint-pull { 0%, 12%, 55%, 100% { transform: translateY(0); } 30% { transform: translateY(30px); } 43% { transform: translateY(-4px); } }
-@keyframes benefit-hint-arrow { 0%, 12%, 55%, 100% { transform: translateY(0); } 30% { transform: translateY(5px); } }
 @media (min-width: 640px) and (max-width: 899px) {
   .contest-2027 .benefit-light { padding-left: 16px; padding-right: 16px; }
   .contest-2027 .benefit-light-copy h4 { font-size: 17px; }

@@ -1,17 +1,41 @@
-import { useId, useRef, useState, type PointerEvent } from "react";
+import { useEffect, useId, useRef, useState, type PointerEvent } from "react";
 import { Button } from "@/components/ui/button";
-import { toggleBenefitLight, type BenefitLights } from "@/lib/benefit-lights";
+import { shouldHintBenefitPull, toggleBenefitLight, type BenefitLights } from "@/lib/benefit-lights";
 
 type Benefit = { title: string; text: string };
 
-function CordCard({ benefit, index, on, onToggle }: {
-  benefit: Benefit; index: number; on: boolean; onToggle: () => void;
+function CordCard({ benefit, index, on, hint, onToggle }: {
+  benefit: Benefit; index: number; on: boolean; hint: boolean; onToggle: () => void;
 }) {
   const id = useId();
   const lamp = useRef<HTMLDivElement>(null);
-  const [interacted, setInteracted] = useState(false);
+  const motion = useRef<HTMLDivElement>(null);
+  const animation = useRef<Animation | null>(null);
+  const [busy, setBusy] = useState(false);
   const held = useRef<{ id: number; x: number; y: number; moved: number; flipped: boolean } | null>(null);
-  const showHint = index === 0 && !interacted && !on;
+  const showHint = index === 0 && hint && !busy;
+
+  useEffect(() => () => animation.current?.cancel(), []);
+
+  function settle() {
+    animation.current?.cancel();
+    if (!motion.current || window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      setBusy(false);
+      return;
+    }
+    setBusy(true);
+    const swing = motion.current.animate([
+      { transform: "rotate(0deg) translateY(12px)" },
+      { transform: "rotate(12deg) translateY(-5px)" },
+      { transform: "rotate(-9deg) translateY(3px)" },
+      { transform: "rotate(6deg) translateY(-2px)" },
+      { transform: "rotate(-3deg) translateY(1px)" },
+      { transform: "rotate(1deg)" },
+      { transform: "rotate(0deg)" },
+    ], { duration: 1500, easing: "ease-in-out" });
+    animation.current = swing;
+    swing.onfinish = () => { animation.current = null; setBusy(false); };
+  }
 
   function reset() {
     held.current = null;
@@ -47,6 +71,7 @@ function CordCard({ benefit, index, on, onToggle }: {
           <div className="benefit-lamp-shade" />
           <div className="benefit-lamp-bulb"><span /></div>
         </div>
+        <div className="benefit-cord-motion" ref={motion}>
         <div className="benefit-cord" aria-hidden="true"><svg viewBox="0 0 40 110" preserveAspectRatio="none"><path d="M20 0 C18 35 22 68 20 110" /></svg></div>
         <Button
           type="button"
@@ -59,7 +84,8 @@ function CordCard({ benefit, index, on, onToggle }: {
           title={`${on ? "Выключить" : "Включить"} свет`}
           onPointerDown={(event) => {
             if (event.button !== 0) return;
-            setInteracted(true);
+            animation.current?.cancel();
+            setBusy(true);
             held.current = { id: event.pointerId, x: event.clientX, y: event.clientY, moved: 0, flipped: false };
             event.currentTarget.setPointerCapture(event.pointerId);
             lamp.current?.setAttribute("data-held", "true");
@@ -71,13 +97,14 @@ function CordCard({ benefit, index, on, onToggle }: {
             const tap = drag.moved < 5 && !drag.flipped;
             reset();
             if (tap) onToggle();
+            settle();
           }}
-          onPointerCancel={reset}
-          onLostPointerCapture={reset}
-          onClick={(event) => { if (event.detail === 0) { setInteracted(true); onToggle(); } }}
+          onPointerCancel={() => { reset(); settle(); }}
+          onLostPointerCapture={() => { if (held.current) { reset(); settle(); } }}
+          onClick={(event) => { if (event.detail === 0) { onToggle(); settle(); } }}
         ><span className="benefit-cord-bead" aria-hidden="true" /></Button>
+        </div>
       </div>
-      {showHint && <span className="benefit-pull-hint"><span aria-hidden="true">↓</span> Дёрни за шнурок</span>}
       <div id={id} className="benefit-light-copy" aria-hidden={!on}>
         <h4 className="font-display font-semibold">{benefit.title}</h4>
         <p>{benefit.text}</p>
@@ -92,7 +119,7 @@ export function BenefitLightCards({ benefits }: { benefits: readonly Benefit[] }
   return (
     <div className="benefit-lights-grid">
       {benefits.map((benefit, index) => (
-        <CordCard key={benefit.title} benefit={benefit} index={index} on={lights[index] ?? false}
+        <CordCard key={benefit.title} benefit={benefit} index={index} on={lights[index] ?? false} hint={shouldHintBenefitPull(lights)}
           onToggle={() => setLights((current) => toggleBenefitLight(current, index))} />
       ))}
     </div>
