@@ -5,7 +5,8 @@ export const CONTEST_2027 = {
   months: 6,
   monthlyFund: 500_000,
   prizes: [300_000, 150_000, 50_000],
-  scrambleInterval: 12_000,
+  scrambleInterval: 5_000,
+  headlineEndings: ["великой снова", "качественной", "эффективной"],
 } as const;
 
 export function formatContest2027AwardDate(now = new Date()) {

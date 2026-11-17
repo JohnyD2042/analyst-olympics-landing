@@ -3,6 +3,7 @@ import { strict as assert } from "node:assert";
 import { CONTEST_2027, formatContest2027AwardDate } from "./contest-2027";
 
 describe("contest 2027", () => {
+  test("scramble repeats every five seconds", () => assert.equal(CONTEST_2027.scrambleInterval, 5_000));
   test("fund is 3 million over six awards of 500 thousand", () => {
     assert.equal(CONTEST_2027.fund, 3_000_000);
     assert.equal(CONTEST_2027.months, 6);
