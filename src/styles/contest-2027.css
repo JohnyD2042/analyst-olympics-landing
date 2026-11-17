@@ -219,21 +219,19 @@
 
 /* Independent pendant switches: light reveals each benefit, without moving the grid. */
 .contest-2027 {
-  --benefit-light-quality: var(--silver);
-  --benefit-light-brand: var(--primary);
-  --benefit-light-awards: var(--contest-gold);
+  --benefit-light-warm: var(--contest-gold-mid);
+  --benefit-bulb-lit: linear-gradient(180deg, var(--contest-gold-hi), var(--benefit-light-warm));
+  --benefit-bulb-glow: 0 0 12px 4px color-mix(in srgb, var(--benefit-light-warm) 80%, transparent), 0 0 34px 12px color-mix(in srgb, var(--benefit-light-warm) 35%, transparent);
   --benefit-lamp-metal: linear-gradient(110deg, var(--surface-2), var(--silver) 28%, var(--foreground) 44%, var(--silver) 55%, var(--surface-2));
   --benefit-room: linear-gradient(180deg, var(--surface-2), var(--surface));
 }
 .contest-2027 .benefit-lights-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; margin-top: 24px; text-align: left; }
 .contest-2027 .benefit-light {
-  --light: var(--benefit-light-quality);
-  position: relative; min-width: 0; min-height: 310px; overflow: hidden; isolation: isolate;
+  --light: var(--benefit-light-warm);
+  position: relative; min-width: 0; min-height: 300px; overflow: hidden; isolation: isolate;
   border: 1px solid var(--border); border-radius: 8px; background: var(--benefit-room);
-  transition: border-color .5s; padding: 150px 22px 36px;
+  transition: border-color .5s; padding: 132px 20px 30px;
 }
-.contest-2027 .benefit-light-2 { --light: var(--benefit-light-brand); }
-.contest-2027 .benefit-light-3 { --light: var(--benefit-light-awards); }
 .contest-2027 .benefit-light[data-on="true"] { border-color: color-mix(in srgb, var(--light) 50%, var(--border)); }
 .contest-2027 .benefit-light-flood {
   position: absolute; inset: 0; z-index: -1; pointer-events: none;
@@ -241,16 +239,19 @@
   clip-path: circle(0% at 50% 95px); transition: clip-path .7s cubic-bezier(.2,.7,.3,1);
 }
 .contest-2027 .benefit-light[data-on="true"] .benefit-light-flood { clip-path: circle(140% at 50% 95px); }
+.contest-2027 .benefit-light-flood::after { content: ""; position: absolute; top: 48px; bottom: 0; left: 8%; right: 8%; clip-path: polygon(38% 0, 62% 0, 100% 100%, 0 100%); background: linear-gradient(180deg, color-mix(in srgb, var(--light) 28%, transparent), transparent); }
 .contest-2027 .benefit-light-index { position: absolute; top: 22px; left: 24px; font-size: 12px; color: var(--muted-foreground); }
-.contest-2027 .benefit-lamp { position: absolute; top: -28px; left: calc(50% - 65px); width: 130px; height: 180px; --pull-y: 0px; --pull-x: 0px; --lamp-lean: 0deg; }
+.contest-2027 .benefit-lamp { position: absolute; top: calc(50% - 100px); left: calc(50% - 65px); width: 130px; height: 180px; transform-origin: top center; transition: top .6s cubic-bezier(.2,.7,.3,1), transform .6s cubic-bezier(.2,.7,.3,1); --pull-y: 0px; --pull-x: 0px; --lamp-lean: 0deg; }
+.contest-2027 .benefit-light[data-on="true"] .benefit-lamp { top: -26px; transform: scale(.8); }
 .contest-2027 .benefit-lamp-fixture { position: absolute; inset: 0; transform-origin: 65px 0; transform: rotate(var(--lamp-lean)); transition: transform .65s cubic-bezier(.2,1.65,.4,1); }
-.contest-2027 .benefit-lamp-wire { position: absolute; left: 64px; top: 0; height: 48px; width: 2px; background: var(--muted-foreground); }
+.contest-2027 .benefit-lamp-wire { position: absolute; left: 64px; top: -200px; height: 248px; width: 2px; background: var(--muted-foreground); }
 .contest-2027 .benefit-lamp-cap { position: absolute; left: 56px; top: 43px; width: 18px; height: 14px; border-radius: 4px 4px 0 0; background: var(--benefit-lamp-metal); }
 .contest-2027 .benefit-lamp-shade { position: absolute; left: 16px; top: 52px; width: 98px; height: 45px; border-radius: 52px 52px 8px 8px; background: var(--benefit-lamp-metal); border-bottom: 3px solid var(--silver); z-index: 2; }
 .contest-2027 .benefit-lamp-bulb { position: absolute; left: 51px; top: 82px; width: 28px; height: 31px; border-radius: 50%; background: var(--surface-2); border: 1px solid var(--silver); transition: background .3s, transform .45s; }
 .contest-2027 .benefit-lamp-bulb span { position: absolute; left: 8px; top: 8px; width: 10px; height: 13px; border: 1px solid var(--muted-foreground); border-top: 0; border-radius: 0 0 5px 5px; }
-.contest-2027 .benefit-light[data-on="true"] .benefit-lamp-bulb { background: var(--light); transform: scale(1.08); }
-.contest-2027 .benefit-light[data-on="true"] .benefit-lamp-bulb span { border-color: var(--foreground); }
+.contest-2027 .benefit-light[data-on="true"] .benefit-lamp-bulb { background: var(--benefit-bulb-lit); border-color: var(--contest-gold-hi); box-shadow: var(--benefit-bulb-glow); transform: scale(1.08); }
+.contest-2027 .benefit-light[data-on="true"] .benefit-lamp-bulb span { border-color: var(--contest-gold-deep); }
+.contest-2027 .benefit-light[data-on="true"] .benefit-lamp-shade { border-bottom-color: var(--contest-gold-hi); }
 .contest-2027 .benefit-cord { position: absolute; left: 83px; top: 91px; width: 40px; height: calc(65px + var(--pull-y)); transform: translateX(var(--pull-x)); transform-origin: top center; transition: height .65s cubic-bezier(.2,1.65,.4,1), transform .65s cubic-bezier(.2,1.65,.4,1); }
 .contest-2027 .benefit-cord svg { width: 100%; height: 100%; }
 .contest-2027 .benefit-cord path { fill: none; stroke: var(--silver); stroke-width: 1.5; }
@@ -262,10 +263,10 @@
 .contest-2027 .benefit-lamp[data-held] .benefit-cord-grab,
 .contest-2027 .benefit-lamp[data-held] .benefit-lamp-fixture { transition: none; }
 .contest-2027 .benefit-light-copy { opacity: 0; visibility: hidden; transform: translateY(10px); transition: opacity .35s, transform .45s, visibility .35s; }
-.contest-2027 .benefit-light[data-on="true"] .benefit-light-copy { opacity: 1; visibility: visible; transform: none; transition-delay: .12s; }
-.contest-2027 .benefit-light-copy h4 { font-size: 20px; line-height: 1.35; letter-spacing: 0; }
-.contest-2027 .benefit-light-copy p { margin-top: 12px; font-size: 14px; line-height: 1.65; color: var(--muted-foreground); }
-.contest-2027 .benefit-light-status { position: absolute; bottom: 24px; left: 28px; width: 24px; height: 2px; background: var(--border); }
+.contest-2027 .benefit-light[data-on="true"] .benefit-light-copy { opacity: 1; visibility: visible; transform: none; transition-delay: .3s; }
+.contest-2027 .benefit-light-copy h4 { font-size: 18px; line-height: 1.35; letter-spacing: 0; }
+.contest-2027 .benefit-light-copy p { margin-top: 10px; font-size: 14px; line-height: 1.5; color: var(--foreground); overflow-wrap: anywhere; }
+.contest-2027 .benefit-light-status { position: absolute; bottom: 16px; left: 20px; width: 24px; height: 2px; background: var(--border); }
 .contest-2027 .benefit-light-status span { display: block; height: 100%; background: var(--light); opacity: 0; transition: opacity .35s; }
 .contest-2027 .benefit-light[data-on="true"] .benefit-light-status span { opacity: 1; }
 .contest-2027 .benefit-lamp[data-hint="true"] .benefit-cord { animation: benefit-cord-hint-length 4s 1s ease-in-out infinite; }
