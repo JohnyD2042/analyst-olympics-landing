@@ -4,6 +4,7 @@ import { z } from "zod";
 import { CONTEST_2027, formatContest2027AwardDate } from "@/lib/contest-2027";
 import { ScrambleHeading } from "@/components/scramble-heading";
 import contestCss from "@/styles/contest-2027.css?url";
+import { isValidContact } from "@/lib/contact";
 import { PrizeFan } from "@/components/prize-fan";
 import {
   Menu,
@@ -244,7 +245,14 @@ function Hero() {
           className="mt-5 mx-auto max-w-2xl text-base sm:text-xl text-muted-foreground animate-slide-up"
           style={{ animationDelay: "120ms" }}
         >
-          Открытый конкурс аналитики по фьючерсам российского рынка
+          Открытый конкурс аналитики{" "}
+          <span className="contest-marker">
+            по фьючерсам
+            <svg className="contest-marker-oval" viewBox="0 0 200 60" preserveAspectRatio="none" aria-hidden="true">
+              <path pathLength="1" d="M108 6C60 3 12 10 6 30c-5 18 40 26 96 25 52-1 94-9 92-27C192 12 150 4 96 6 70 7 44 11 30 16" />
+            </svg>
+          </span>{" "}
+          российского рынка
         </p>
 
         <div
@@ -377,7 +385,7 @@ function Format() {
     {
       n: "1",
       title: "Вы делитесь идеей",
-      text: "Пишете в своём канале, блоге или на сайте: «Думаем, что акция X вырастет до Y по следующим причинам».",
+      text: "Пишете в своём канале, блоге или рассылке: «Думаем, что инструмент X вырастет или упадет до уровня Y по следующим причинам».",
     },
     {
       n: "2",
@@ -403,7 +411,7 @@ function Format() {
           Как это работает
         </h2>
         <p className="mt-4 mx-auto max-w-2xl text-muted-foreground text-base sm:text-lg">
-          Вы продолжаете создавать аналитику, а мы доносим ваши идеи до широкой
+          Вы продолжаете создавать аналитику, а мы включаем ее в базу и доносим до широкой
           аудитории.
         </p>
 
@@ -691,9 +699,9 @@ const applicationSchema = z.object({
   email: z
     .string()
     .trim()
-    .min(1, { message: "Укажите email для связи" })
-    .max(254, { message: "Email слишком длинный" })
-    .email({ message: "Введите корректный email" }),
+    .min(1, { message: "Укажите e-mail или Telegram для связи" })
+    .max(254, { message: "Слишком длинное значение" })
+    .refine(isValidContact, { message: "Введите e-mail или Telegram в формате @username" }),
 });
 
 function Apply() {
@@ -840,15 +848,14 @@ function ApplyForm() {
         />
       </Field>
 
-      <Field id="email" label="E-mail для связи" error={errors.email}>
+      <Field id="email" label="E-mail или Telegram для связи" error={errors.email}>
         <input
           id="email"
-          type="email"
+          type="text"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
-          placeholder="you@example.com"
+          placeholder="you@example.com или @username"
           autoComplete="email"
-          inputMode="email"
           className="w-full h-12 px-4 rounded-lg bg-background border border-border text-foreground placeholder:text-muted-foreground/60 focus:outline-none focus:ring-2 focus:ring-ring focus:border-transparent transition"
           aria-invalid={!!errors.email}
           required
