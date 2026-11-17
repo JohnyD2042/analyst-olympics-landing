@@ -105,6 +105,7 @@
 .prize-fan .contest-prize-content { justify-content: center; align-items: center; text-align: center; gap: 14px; }
 /* engraved look: recessed dark ink with a light lower lip */
 .prize-fan .contest-prize-place,
+.prize-fan .contest-prize-note,
 .prize-fan .contest-prize-amount {
   color: color-mix(in srgb, var(--metal) 45%, var(--contest-metal-ink));
   text-shadow:
@@ -148,4 +149,10 @@
   .prize-fan .contest-prize-1 .contest-prize-amount { font-size: 19px; }
   .prize-fan .contest-prize-1 .prize-fan-trophy { width: 54px; height: 60px; }
   .prize-fan-trophy { height: 42px; }
+}
+
+.prize-fan .contest-prize-note { margin-top: -8px; font-size: 12px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; }
+.prize-fan .contest-prize-1 .contest-prize-note { font-size: 13px; }
+@media (max-width: 639px) {
+  .prize-fan .contest-prize-note, .prize-fan .contest-prize-1 .contest-prize-note { margin-top: -4px; font-size: 7px; letter-spacing: .04em; }
 }

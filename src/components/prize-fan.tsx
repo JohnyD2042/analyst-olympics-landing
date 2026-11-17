@@ -63,6 +63,7 @@ export function PrizeFan({ prizes }: { prizes: Prize[] }) {
                 <h4 className="contest-prize-place">{PLACE_NAMES[p.rank - 1]}</h4>
                 <CupIcon rank={p.rank} />
                 <p className="contest-prize-amount">{p.amount}</p>
+                <p className="contest-prize-note">+ слава и признание</p>
               </div>
             </article>
           );
