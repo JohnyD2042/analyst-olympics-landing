@@ -36,7 +36,7 @@
   overflow: hidden;
   isolation: isolate;
   border-radius: 8px;
-  border: 1px solid color-mix(in oklch, var(--metal) 65%, var(--contest-metal-light));
+  border: 1px solid color-mix(in srgb, var(--metal) 65%, var(--contest-metal-light));
   background: var(--metal-gradient);
   color: var(--contest-metal-ink);
   box-shadow: var(--contest-metal-shadow);
