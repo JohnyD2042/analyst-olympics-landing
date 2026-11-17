@@ -4,7 +4,7 @@ import { z } from "zod";
 import { CONTEST_2027, formatContest2027AwardDate } from "@/lib/contest-2027";
 import { ScrambleHeading } from "@/components/scramble-heading";
 import contestCss from "@/styles/contest-2027.css?url";
-import metalTexture from "@/assets/award-brushed-metal.jpg";
+import { PrizeFan } from "@/components/prize-fan";
 import {
   Menu,
   X,
@@ -308,6 +308,7 @@ function Awards() {
         <h2 className="mt-3 font-display font-bold text-3xl sm:text-5xl">Призовой фонд</h2>
 
         <div className="contest-fund mt-7 p-5 sm:p-8 overflow-hidden relative text-left">
+          <div className="absolute -top-24 -right-24 h-72 w-72 rounded-full bg-gradient-gold opacity-20 blur-3xl" />
           <div className="relative grid lg:grid-cols-2 gap-4 lg:gap-8 items-center">
             <div className="text-center lg:text-left">
               <div className="contest-fund-amount mt-2 font-display font-extrabold text-gradient-gold leading-none whitespace-nowrap">
@@ -340,6 +341,7 @@ function Awards() {
                   </div>
                 </div>
               </div>
+              <div className="mt-4 h-px w-full bg-gradient-gold opacity-60" />
             </div>
           </div>
         </div>
@@ -347,14 +349,10 @@ function Awards() {
         <div className="mt-8 text-center">
           <h3 className="font-display font-bold text-2xl sm:text-3xl">Награды и признание</h3>
           <p className="mt-3 mx-auto max-w-2xl text-muted-foreground">
-            Каждый месяц определяем самые доходные инвест-идеи по фьючерсам
+            Каждый месяц определяем лучшие инвест-идеи по фьючерсам
           </p>
 
-          <div className="mt-6 grid md:grid-cols-3 gap-4 text-left">
-            {CONTEST_2027.prizes.map((prize, index) => (
-              <NominationCard key={index} rank={index + 1} prize={money(prize)} />
-            ))}
-          </div>
+          <PrizeFan prizes={CONTEST_2027.prizes.map((prize, index) => ({ rank: index + 1, amount: money(prize) }))} />
         </div>
 
         <div className="mt-6 inline-flex max-w-full items-center gap-3 px-5 py-3 rounded-lg border border-border bg-surface/70 backdrop-blur">
@@ -369,18 +367,6 @@ function Awards() {
         </div>
       </div>
     </section>
-  );
-}
-
-function NominationCard({ rank, prize }: { rank: number; prize: string }) {
-  return (
-    <article className={`contest-prize contest-prize-${rank}`}>
-      <img src={metalTexture} alt="" aria-hidden="true" loading="lazy" width={1024} height={1024} className="contest-prize-texture" />
-      <div className="contest-prize-content">
-        <h4 className="contest-prize-place">{rank}-е место</h4>
-        <p className="contest-prize-amount">{prize}</p>
-      </div>
-    </article>
   );
 }
 
