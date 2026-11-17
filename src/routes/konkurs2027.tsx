@@ -357,7 +357,12 @@ function Awards() {
         <div className="mt-8 text-center">
           <h3 className="font-display font-bold text-2xl sm:text-3xl">Награды и признание</h3>
           <p className="mt-3 mx-auto max-w-2xl text-muted-foreground">
-            Каждый месяц определяем лучшие инвест-идеи по фьючерсам
+            <span className="contest-marker">
+              Каждый месяц
+              <svg className="contest-marker-oval" viewBox="0 0 200 60" preserveAspectRatio="none" aria-hidden="true">
+                <path pathLength="1" d="M108 6C60 3 12 10 6 30c-5 18 40 26 96 25 52-1 94-9 92-27C192 12 150 4 96 6 70 7 44 11 30 16" />
+              </svg>
+            </span>{" "}определяем лучшие инвест-идеи по фьючерсам
           </p>
 
           <PrizeFan prizes={CONTEST_2027.prizes.map((prize, index) => ({ rank: index + 1, amount: money(prize) }))} />
@@ -796,7 +801,7 @@ function ApplyForm() {
           type="text"
           value={name}
           onChange={(e) => setName(e.target.value)}
-          placeholder="Федор Баффет"
+          placeholder="Срочка и точка"
           className="w-full h-12 px-4 rounded-lg bg-background border border-border text-foreground placeholder:text-muted-foreground/60 focus:outline-none focus:ring-2 focus:ring-ring focus:border-transparent transition"
           aria-invalid={!!errors.name}
           required
@@ -975,6 +980,17 @@ function Footer() {
                   className="text-foreground/80 hover:text-foreground transition-colors inline-flex items-center gap-1.5"
                 >
                   Регламент конкурса
+                  <ExternalLink className="h-3 w-3" />
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://t.me/investidei_konkurs"
+                  target="_blank"
+                  rel="noreferrer noopener"
+                  className="text-foreground/80 hover:text-foreground transition-colors inline-flex items-center gap-1.5"
+                >
+                  Канал для аналитиков
                   <ExternalLink className="h-3 w-3" />
                 </a>
               </li>
