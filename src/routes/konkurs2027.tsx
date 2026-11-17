@@ -147,8 +147,13 @@ function Header() {
           <span className="grid shrink-0 place-items-center w-9 h-9 rounded-lg bg-gradient-primary shadow-glow">
             <Crown className="h-5 w-5 text-primary-foreground" />
           </span>
-          <span className="font-display font-bold text-sm sm:text-lg leading-snug">
-            Срочка <span className="text-gradient-primary">и точка</span>
+          <span className="flex min-w-0 flex-col gap-0.5">
+            <span className="font-display font-bold text-sm sm:text-lg leading-tight">
+              Срочка <span className="text-gradient-primary">и точка</span>
+            </span>
+            <span className="text-[10px] sm:text-[11px] font-light leading-tight text-muted-foreground">
+              Конкурс аналитики
+            </span>
           </span>
         </a>
 
