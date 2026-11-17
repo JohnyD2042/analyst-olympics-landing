@@ -22,6 +22,7 @@ import {
   CheckCircle2,
   Plus,
   Minus,
+  Lightbulb,
   Star,
 } from "lucide-react";
 import { toast } from "sonner";
@@ -141,13 +142,13 @@ function Header() {
           href={anchorHref("about")}
           onClick={(e) => onAnchorClick(e, "about")}
           className="flex min-w-0 items-center gap-2 group"
-          aria-label="Конкурс аналитиков 2027"
+          aria-label="Срочка и точка"
         >
           <span className="grid shrink-0 place-items-center w-9 h-9 rounded-lg bg-gradient-primary shadow-glow">
             <Crown className="h-5 w-5 text-primary-foreground" />
           </span>
           <span className="font-display font-bold text-sm sm:text-lg leading-snug">
-            Конкурс аналитиков <span className="text-gradient-primary">2027</span>
+            Срочка <span className="text-gradient-primary">и точка</span>
           </span>
         </a>
 
@@ -528,10 +529,7 @@ function Participation() {
                 <div className="participant-pass-body">
                   <div className="participant-pass-header">
                     <span className="participant-pass-category font-display">{c.tag}</span>
-                    <svg className="participant-pass-emblem" viewBox="0 0 40 40" fill="none" aria-hidden="true">
-                      <path d="M20 2 36 11v18L20 38 4 29V11Z M20 8 30 14v12L20 32 10 26V14Z" />
-                      <path d="m13 24 5-8 4 5 5-9M13 28h14" />
-                    </svg>
+                    <Lightbulb className="participant-pass-emblem" aria-hidden="true" />
                   </div>
                   <h3 className="participant-pass-title font-display font-bold">{c.title}</h3>
                   {c.text && (
@@ -551,10 +549,6 @@ function Participation() {
                       </li>
                     ))}
                   </ul>
-                </div>
-                <div className="participant-pass-stub" aria-hidden="true">
-                  <div className="participant-pass-barcode" />
-                  <div className="participant-pass-seal"><span /></div>
                 </div>
               </article>
             );
@@ -787,7 +781,7 @@ function ApplyForm() {
           type="text"
           value={name}
           onChange={(e) => setName(e.target.value)}
-          placeholder="Срочка и точка"
+          placeholder={status === "Частный аналитик" ? "Финансовый гений" : "Фьючерс-банк"}
           className="w-full h-12 px-4 rounded-lg bg-background border border-border text-foreground placeholder:text-muted-foreground/60 focus:outline-none focus:ring-2 focus:ring-ring focus:border-transparent transition"
           aria-invalid={!!errors.name}
           required
@@ -839,7 +833,7 @@ function ApplyForm() {
         />
       </Field>
 
-      <Field id="email" label="E-mail или Telegram для связи" error={errors.email}>
+      <Field id="email" label="Как с вами связаться" error={errors.email}>
         <input
           id="email"
           type="text"
@@ -907,7 +901,7 @@ function Footer() {
                 <Crown className="h-5 w-5 text-primary-foreground" />
               </span>
               <span className="font-display font-bold text-lg">
-                Конкурс аналитиков <span className="text-gradient-primary">2027</span>
+                Срочка <span className="text-gradient-primary">и точка</span>
               </span>
             </div>
             <p className="mt-4 text-sm text-muted-foreground max-w-md">

@@ -168,7 +168,7 @@
 @keyframes contest-marker-draw { to { stroke-dashoffset: 0; } }
 @media (prefers-reduced-motion: reduce) { .contest-marker-oval path { animation: none; stroke-dashoffset: 0; } }
 
-/* Tournament credentials: existing copy, restrained metallic trim, tear-off stub. */
+/* Tournament credentials: existing copy, restrained metallic trim, embossed idea emblem. */
 .contest-2027 .participant-pass {
   --pass-metal: var(--silver);
   position: relative;
@@ -202,44 +202,17 @@
 .contest-2027 .participant-pass-body { flex: 1; padding: 24px 30px 30px; }
 .contest-2027 .participant-pass-header { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
 .contest-2027 .participant-pass-category { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0; color: var(--pass-metal); }
-.contest-2027 .participant-pass-emblem { width: 40px; height: 40px; flex-shrink: 0; stroke: var(--pass-metal); stroke-width: 1.2; }
+.contest-2027 .participant-pass-emblem {
+  width: 40px; height: 40px; flex-shrink: 0;
+  stroke: color-mix(in srgb, var(--pass-metal) 85%, var(--foreground));
+  stroke-width: 1.5;
+  filter: drop-shadow(0 1px 0 color-mix(in srgb, var(--pass-metal) 35%, var(--foreground))) drop-shadow(0 -1px 1px var(--background));
+}
 .contest-2027 .participant-pass-title { margin-top: 20px; max-width: 340px; font-size: 28px; line-height: 1.25; letter-spacing: 0; }
 .contest-2027 .participant-pass-list { display: grid; gap: 14px; margin-top: 24px; padding-top: 22px; border-top: 1px solid var(--border); }
 .contest-2027 .participant-pass-list li { display: flex; align-items: baseline; gap: 12px; font-size: 14px; line-height: 1.5; }
 .contest-2027 .participant-pass-list li::before { content: ''; width: 5px; height: 5px; flex-shrink: 0; background: var(--pass-metal); }
-.contest-2027 .participant-pass-stub {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  height: 68px;
-  padding: 16px 30px;
-  border-top: 1px dashed color-mix(in srgb, var(--pass-metal) 40%, transparent);
-  background: var(--background);
-}
-.contest-2027 .participant-pass-stub::before,
-.contest-2027 .participant-pass-stub::after {
-  content: '';
-  position: absolute;
-  top: -8px;
-  width: 14px;
-  height: 14px;
-  border: 1px solid color-mix(in srgb, var(--pass-metal) 50%, var(--surface));
-  border-radius: 50%;
-  background: var(--background);
-}
-.contest-2027 .participant-pass-stub::before { left: -8px; }
-.contest-2027 .participant-pass-stub::after { right: -8px; }
-.contest-2027 .participant-pass-barcode {
-  width: 128px;
-  height: 27px;
-  color: color-mix(in srgb, var(--pass-metal) 60%, var(--surface));
-  background: repeating-linear-gradient(90deg, currentColor 0 1px, transparent 1px 4px, currentColor 4px 7px, transparent 7px 9px, currentColor 9px 11px, transparent 11px 15px, currentColor 15px 16px, transparent 16px 19px);
-}
-.contest-2027 .participant-pass-seal { display: grid; place-items: center; width: 30px; height: 30px; border: 1px solid var(--pass-metal); border-radius: 50%; opacity: .65; }
-.contest-2027 .participant-pass-seal > span { width: 18px; height: 18px; border: 1px solid var(--pass-metal); transform: rotate(45deg); }
 @media (max-width: 639px) {
   .contest-2027 .participant-pass-body { padding: 20px 22px 26px; }
   .contest-2027 .participant-pass-title { font-size: 25px; }
-  .contest-2027 .participant-pass-stub { padding-inline: 22px; }
 }
