@@ -269,10 +269,13 @@
 .contest-2027 .benefit-light-status { position: absolute; bottom: 16px; left: 20px; width: 24px; height: 2px; background: var(--border); }
 .contest-2027 .benefit-light-status span { display: block; height: 100%; background: var(--light); opacity: 0; transition: opacity .35s; }
 .contest-2027 .benefit-light[data-on="true"] .benefit-light-status span { opacity: 1; }
-.contest-2027 .benefit-lamp[data-hint="true"] .benefit-cord { animation: benefit-cord-hint-length 4s 1s ease-in-out infinite; }
-.contest-2027 .benefit-lamp[data-hint="true"] .benefit-cord-grab { animation: benefit-cord-hint-pull 4s 1s ease-in-out infinite; }
-@keyframes benefit-cord-hint-length { 0%, 12%, 45%, 100% { height: 65px; } 25% { height: 87px; } 35% { height: 61px; } }
-@keyframes benefit-cord-hint-pull { 0%, 12%, 45%, 100% { transform: translateY(0); } 25% { transform: translateY(22px); } 35% { transform: translateY(-4px); } }
+.contest-2027 .benefit-lamp[data-hint="true"] .benefit-cord { animation: benefit-cord-hint-length 2.6s ease-in-out infinite; }
+.contest-2027 .benefit-lamp[data-hint="true"] .benefit-cord-grab { animation: benefit-cord-hint-pull 2.6s ease-in-out infinite; }
+.contest-2027 .benefit-pull-hint { position: absolute; bottom: 27px; left: 0; right: 0; text-align: center; font-size: 12px; color: var(--contest-gold-hi); pointer-events: none; }
+.contest-2027 .benefit-pull-hint > span { display: inline-block; margin-right: 5px; font-size: 18px; animation: benefit-hint-arrow 2.6s ease-in-out infinite; }
+@keyframes benefit-cord-hint-length { 0%, 12%, 55%, 100% { height: 65px; } 30% { height: 95px; } 43% { height: 61px; } }
+@keyframes benefit-cord-hint-pull { 0%, 12%, 55%, 100% { transform: translateY(0); } 30% { transform: translateY(30px); } 43% { transform: translateY(-4px); } }
+@keyframes benefit-hint-arrow { 0%, 12%, 55%, 100% { transform: translateY(0); } 30% { transform: translateY(5px); } }
 @media (min-width: 640px) and (max-width: 899px) {
   .contest-2027 .benefit-light { padding-left: 16px; padding-right: 16px; }
   .contest-2027 .benefit-light-copy h4 { font-size: 17px; }

@@ -1,4 +1,4 @@
-import { useEffect, useId, useRef, useState, type PointerEvent } from "react";
+import { useId, useRef, useState, type PointerEvent } from "react";
 import { Button } from "@/components/ui/button";
 import { toggleBenefitLight, type BenefitLights } from "@/lib/benefit-lights";
 
@@ -9,17 +9,9 @@ function CordCard({ benefit, index, on, onToggle }: {
 }) {
   const id = useId();
   const lamp = useRef<HTMLDivElement>(null);
-  const [hint, setHint] = useState(false);
   const [interacted, setInteracted] = useState(false);
   const held = useRef<{ id: number; x: number; y: number; moved: number; flipped: boolean } | null>(null);
-
-  useEffect(() => {
-    const target = lamp.current;
-    if (index !== 0 || interacted || !target) return;
-    const observer = new IntersectionObserver(([entry]) => setHint(entry?.isIntersecting ?? false), { threshold: .6 });
-    observer.observe(target);
-    return () => observer.disconnect();
-  }, [index, interacted]);
+  const showHint = index === 0 && !interacted && !on;
 
   function reset() {
     held.current = null;
@@ -48,7 +40,7 @@ function CordCard({ benefit, index, on, onToggle }: {
     <article className={`benefit-light benefit-light-${index + 1}`} data-on={on ? "true" : "false"} aria-label={benefit.title}>
       <div className="benefit-light-flood" aria-hidden="true" />
       <span className="benefit-light-index font-display" aria-hidden="true">0{index + 1}</span>
-      <div className="benefit-lamp" ref={lamp} data-hint={hint && !interacted ? "true" : undefined}>
+      <div className="benefit-lamp" ref={lamp} data-hint={showHint ? "true" : undefined}>
         <div className="benefit-lamp-fixture" aria-hidden="true">
           <div className="benefit-lamp-wire" />
           <div className="benefit-lamp-cap" />
@@ -85,6 +77,7 @@ function CordCard({ benefit, index, on, onToggle }: {
           onClick={(event) => { if (event.detail === 0) { setInteracted(true); onToggle(); } }}
         ><span className="benefit-cord-bead" aria-hidden="true" /></Button>
       </div>
+      {showHint && <span className="benefit-pull-hint"><span aria-hidden="true">↓</span> Дёрни за шнурок</span>}
       <div id={id} className="benefit-light-copy" aria-hidden={!on}>
         <h4 className="font-display font-semibold">{benefit.title}</h4>
         <p>{benefit.text}</p>
