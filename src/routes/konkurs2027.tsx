@@ -22,7 +22,6 @@ import {
   CheckCircle2,
   Plus,
   Minus,
-  Lightbulb,
   Star,
 } from "lucide-react";
 import { toast } from "sonner";
@@ -534,7 +533,27 @@ function Participation() {
                 <div className="participant-pass-body">
                   <div className="participant-pass-header">
                     <span className="participant-pass-category font-display">{c.tag}</span>
-                    <Lightbulb className="participant-pass-emblem" aria-hidden="true" />
+                    <svg className="participant-pass-emblem" viewBox="0 0 64 64" fill="none" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                      {c.accent === "silver" ? (
+                        <>
+                          {/* Executive chair: headrest, stitched back, armrests and caster base. */}
+                          <rect x="24" y="4" width="16" height="7" rx="3" />
+                          <path d="M28 11v3m8-3v3M23 14h18a3 3 0 0 1 3 3l-2 19H22l-2-19a3 3 0 0 1 3-3Z" />
+                          <path d="M26 19v10m12-10v10M25 32h14M23 36l-3 4h24l-3-4M20 40v3h24v-3" />
+                          <path d="M21 33h-6v-8h5m23 8h6v-8h-5M13 24h8m22 0h8M15 33v7h5m29-7v7h-5" />
+                          <path d="M30 43v7h4v-7M32 50v6m0-6-15 7m15-7 15 7M32 50l-7 9m7-9 7 9" />
+                          <path d="M14 57h6v3h-6Zm30 0h6v3h-6ZM23 59h4m10 0h4M30 57h4v3h-4Z" />
+                        </>
+                      ) : (
+                        <>
+                          {/* Folding beach chair: striped sling, angled frame and cross braces. */}
+                          <path d="m13 7 7-2h22l-7 2H13Zm0 0 9 31h24L35 7M20 5l9 30M22 38l7-3h24l-7 3" />
+                          <path d="m19 11 7 23m0-23 7 20m-1-20 7 20M25 39l-9 18m29-19 9 19M15 57h7m29 0h7" />
+                          <path d="m17 22 7 32m20-28-19 28M20 23l30-3m-6 7 7-7M17 22l3 1m25 10 8 24M26 54h25" />
+                          <circle cx="25" cy="45" r="1.5" />
+                        </>
+                      )}
+                    </svg>
                   </div>
                   <h3 className="participant-pass-title font-display font-bold">{c.title}</h3>
                   {c.text && (
