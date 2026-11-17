@@ -22,7 +22,6 @@ import {
   CheckCircle2,
   Plus,
   Minus,
-  Palmtree,
   Star,
 } from "lucide-react";
 import { toast } from "sonner";
@@ -470,7 +469,6 @@ function Format() {
 function Participation() {
   const cards = [
     {
-      icon: <Building2 className="h-6 w-6" />,
       tag: "Институционалы",
       title: "Профессиональные аналитики",
       text: "",
@@ -479,10 +477,9 @@ function Participation() {
         "Управляющие компании",
         "Банки и инвест-дома",
       ],
-      accent: "primary" as const,
+      accent: "silver" as const,
     },
     {
-      icon: <Palmtree className="h-6 w-6" />,
       tag: "Инфлюенсеры",
       title: "Независимые авторы",
       text: "",
@@ -492,7 +489,7 @@ function Participation() {
         "Авторские рассылки",
         "Сайты и сервисы аналитики",
       ],
-      accent: "gold" as const,
+      accent: "bronze" as const,
     },
   ];
   const benefits = [
@@ -520,33 +517,23 @@ function Participation() {
           Кто может участвовать
         </h2>
 
-        <div className="mt-10 mx-auto max-w-5xl grid md:grid-cols-2 gap-5 text-left">
+        <div className="participant-passes mt-10 mx-auto max-w-5xl grid md:grid-cols-2 gap-5 text-left">
           {cards.map((c) => {
-            const isGold = c.accent === "gold";
             return (
-              <div
+              <article
                 key={c.title}
-                className="group relative rounded-3xl border border-border bg-gradient-to-br from-surface-2 to-surface p-7 sm:p-8 overflow-hidden transition hover:-translate-y-1 hover:border-foreground/25 hover:shadow-elegant"
+                className={`participant-pass participant-pass-${c.accent}`}
               >
-                <div
-                  className={`absolute -top-20 -right-20 h-56 w-56 rounded-full blur-3xl opacity-25 ${
-                    isGold ? "bg-gradient-gold" : "bg-gradient-primary"
-                  }`}
-                />
-                <div className="relative">
-                  <div className="flex items-center justify-between">
-                    <div
-                      className={`grid place-items-center w-14 h-14 rounded-2xl text-primary-foreground shadow-glow ${
-                        isGold ? "bg-gradient-gold text-background" : "bg-gradient-primary"
-                      }`}
-                    >
-                      {c.icon}
-                    </div>
-                    <span className="text-[10px] uppercase tracking-[0.18em] text-muted-foreground px-2.5 py-1 rounded-full border border-border bg-background/40">
-                      {c.tag}
-                    </span>
+                <div className="participant-pass-rail" aria-hidden="true"><span /></div>
+                <div className="participant-pass-body">
+                  <div className="participant-pass-header">
+                    <span className="participant-pass-category font-display">{c.tag}</span>
+                    <svg className="participant-pass-emblem" viewBox="0 0 40 40" fill="none" aria-hidden="true">
+                      <path d="M20 2 36 11v18L20 38 4 29V11Z M20 8 30 14v12L20 32 10 26V14Z" />
+                      <path d="m13 24 5-8 4 5 5-9M13 28h14" />
+                    </svg>
                   </div>
-                  <h3 className="mt-6 font-display font-bold text-2xl">{c.title}</h3>
+                  <h3 className="participant-pass-title font-display font-bold">{c.title}</h3>
                   {c.text && (
                     <p className="mt-2.5 text-sm sm:text-[15px] text-muted-foreground leading-relaxed">
                       {c.text}
@@ -557,20 +544,19 @@ function Participation() {
                       {c.footnote}
                     </p>
                   )}
-                  <ul className="mt-5 space-y-2.5 pt-5 border-t border-border">
+                  <ul className="participant-pass-list">
                     {c.bullets.map((b) => (
-                      <li key={b} className="flex items-center gap-2.5 text-sm">
-                        <CheckCircle2
-                          className={`h-4 w-4 shrink-0 ${
-                            isGold ? "text-[oklch(0.85_0.14_85)]" : "text-accent-cyan"
-                          }`}
-                        />
-                        <span className="text-foreground/90">{b}</span>
+                      <li key={b}>
+                        <span>{b}</span>
                       </li>
                     ))}
                   </ul>
                 </div>
-              </div>
+                <div className="participant-pass-stub" aria-hidden="true">
+                  <div className="participant-pass-barcode" />
+                  <div className="participant-pass-seal"><span /></div>
+                </div>
+              </article>
             );
           })}
         </div>
