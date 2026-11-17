@@ -1,0 +1,72 @@
+import { useEffect, useState } from "react";
+import { CONTEST_2027 } from "@/lib/contest-2027";
+
+const TEXT = "Сделаем финансовую аналитику великой снова";
+const GLYPHS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789#%&*+=/<>";
+
+export function ScrambleHeading() {
+  const [frame, setFrame] = useState<{ letters: string[]; settled: boolean[] } | null>(null);
+
+  useEffect(() => {
+    const motion = window.matchMedia("(prefers-reduced-motion: reduce)");
+    let timer: ReturnType<typeof setInterval> | undefined;
+    const decode = () => {
+      if (motion.matches || document.hidden) return;
+      if (timer) clearInterval(timer);
+      const start = performance.now();
+      const deadlines = Array.from(TEXT, (_, index) => 180 + index * 24 + Math.random() * 180);
+      timer = setInterval(() => {
+        const elapsed = performance.now() - start;
+        const settled = deadlines.map((end) => elapsed >= end);
+        setFrame({
+          settled,
+          letters: Array.from(TEXT, (letter, index) => settled[index] || letter === " " ? letter : GLYPHS[Math.floor(Math.random() * GLYPHS.length)]),
+        });
+        if (settled.every(Boolean)) {
+          clearInterval(timer);
+          setFrame(null);
+        }
+      }, 55);
+    };
+    decode();
+    const repeat = setInterval(decode, CONTEST_2027.scrambleInterval);
+    const onMotionChange = () => {
+      if (motion.matches) {
+        clearInterval(timer);
+        setFrame(null);
+      }
+    };
+    motion.addEventListener("change", onMotionChange);
+    return () => {
+      clearInterval(timer);
+      clearInterval(repeat);
+      motion.removeEventListener("change", onMotionChange);
+    };
+  }, []);
+
+  let index = 0;
+  return (
+    <h1 className="contest-scramble mt-6 mx-auto max-w-5xl font-extrabold">
+      <span className="sr-only">{TEXT}</span>
+      <span aria-hidden="true">
+        {TEXT.split(" ").map((word, wordIndex, words) => {
+          const start = index;
+          index += word.length + 1;
+          return (
+            <span key={word}>
+              <span className="contest-scramble-word">
+                {Array.from(word, (letter, offset) => (
+                  <span key={offset} className={`contest-scramble-letter ${frame && !frame.settled[start + offset] ? "text-muted-foreground" : wordIndex === 1 || wordIndex === 2 ? "text-accent-cyan" : "text-foreground"}`}>
+                    {frame?.letters[start + offset] ?? letter}
+                  </span>
+                ))}
+                {wordIndex === words.length - 1 && <span className="contest-caret" />}
+              </span>
+              {wordIndex < words.length - 1 && " "}
+            </span>
+          );
+        })}
+      </span>
+    </h1>
+  );
+}

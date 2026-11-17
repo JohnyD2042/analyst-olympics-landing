@@ -1,0 +1,69 @@
+.contest-2027 {
+  --contest-champion: var(--gold);
+  --contest-runner: var(--accent-cyan);
+  --contest-third: var(--silver);
+}
+.contest-2027 .contest-scramble {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 28px;
+  line-height: 1.22;
+  letter-spacing: 0;
+}
+.contest-scramble-word { display: inline-block; white-space: nowrap; }
+.contest-scramble-letter { display: inline-block; width: .62em; }
+.contest-caret {
+  display: inline-block;
+  width: .28em;
+  height: .88em;
+  margin-left: .12em;
+  vertical-align: -.05em;
+  background: var(--accent-cyan);
+  animation: contest-caret-blink 1.1s steps(1) infinite;
+}
+@keyframes contest-caret-blink { 50% { opacity: 0; } }
+.contest-2027 .contest-fund-amount { font-size: 36px; }
+.contest-prize {
+  --prize-accent: var(--contest-third);
+  position: relative;
+  min-height: 260px;
+  padding: 28px;
+  overflow: hidden;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  border-top: 3px solid var(--prize-accent);
+  background: var(--surface);
+  transition: transform .25s, border-color .25s;
+}
+.contest-prize:hover { transform: translateY(-4px); border-color: var(--prize-accent); }
+.contest-prize-1 { --prize-accent: var(--contest-champion); background: var(--surface-2); }
+.contest-prize-2 { --prize-accent: var(--contest-runner); }
+.contest-prize::before, .contest-prize::after {
+  content: "";
+  position: absolute;
+  width: 28px;
+  height: 170px;
+  top: -25px;
+  right: 28px;
+  transform: skewX(-22deg);
+  background: color-mix(in oklch, var(--prize-accent) 9%, transparent);
+}
+.contest-prize::after { right: 66px; width: 8px; }
+.contest-prize-rank { font-size: 64px; line-height: 1; font-weight: 800; color: var(--prize-accent); letter-spacing: 0; }
+.contest-prize-top { color: var(--prize-accent); font-size: 12px; font-weight: 700; }
+.contest-prize-amount { font-size: 36px; line-height: 1.15; font-weight: 800; white-space: nowrap; letter-spacing: 0; }
+@media (min-width: 640px) {
+  .contest-2027 .contest-scramble { font-size: 48px; }
+  .contest-2027 .contest-fund-amount { font-size: 64px; }
+}
+@media (min-width: 1024px) {
+  .contest-2027 .contest-scramble { font-size: 60px; }
+  .contest-2027 .contest-fund-amount { font-size: 72px; }
+  .contest-prize { min-height: 300px; }
+  .contest-prize-1 { margin-top: -16px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .contest-caret { animation: none; }
+  .contest-prize { transition: none; }
+  .contest-2027 .animate-slide-up, .contest-2027 .animate-pulse-dot { animation: none; }
+  .contest-prize:hover { transform: none; }
+}

@@ -1,7 +1,9 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
 import { z } from "zod";
-import { formatNextAwardDate } from "@/lib/award-date";
+import { CONTEST_2027, formatContest2027AwardDate } from "@/lib/contest-2027";
+import { ScrambleHeading } from "@/components/scramble-heading";
+import contestCss from "@/styles/contest-2027.css?url";
 import {
   Menu,
   X,
@@ -9,7 +11,6 @@ import {
   ExternalLink,
   Trophy,
   Medal,
-  Award,
   Crown,
   Building2,
   ShieldCheck,
@@ -28,24 +29,24 @@ import { Toaster } from "@/components/ui/sonner";
 export const Route = createFileRoute("/konkurs2027")({
   head: () => ({
     meta: [
-      { title: "Конкурс аналитиков — рабочая копия 2027" },
+      { title: "Конкурс аналитиков 2027 — конкурс идей по фьючерсам" },
       {
         name: "description",
         content:
-          "Рабочая копия страницы конкурса аналитиков для подготовки сезона 2027. Содержание конкурса 2026 сохранено без изменений.",
+          "Открытый конкурс аналитики по фьючерсам российского рынка. Призовой фонд — 3 000 000 рублей.",
       },
-      { property: "og:title", content: "Конкурс аналитиков — рабочая копия 2027" },
+      { property: "og:title", content: "Конкурс аналитиков 2027 — конкурс идей по фьючерсам" },
       {
         property: "og:description",
         content:
-          "Рабочая копия конкурса инвестиционных идей для подготовки сезона 2027; пока сохранены условия 2026 года.",
+          "Конкурс аналитиков 2027: инвестиционные идеи по фьючерсам российского рынка и ежемесячные награды.",
       },
       { property: "og:type", content: "website" },
       { property: "og:url", content: "/konkurs2027" },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "robots", content: "noindex, nofollow" },
     ],
-    links: [{ rel: "canonical", href: "/konkurs2027" }],
+    links: [{ rel: "canonical", href: "/konkurs2027" }, { rel: "stylesheet", href: contestCss }],
   }),
   component: LandingPage,
 });
@@ -58,7 +59,7 @@ const NAV = [
   { id: "faq", label: "FAQ" },
 ] as const;
 
-const EXAMPLES_URL = "https://invest-idei.ru/unauthorized?pro=0";
+const EXAMPLES_URL = "https://konkurs.invest-idei.ru/";
 const MOEX_URL = "https://www.moex.com/n100378";
 
 function scrollToId(id: string) {
@@ -80,7 +81,7 @@ function onAnchorClick(e: React.MouseEvent<HTMLAnchorElement>, id: string) {
 
 function LandingPage() {
   return (
-    <div className="min-h-screen bg-background text-foreground">
+    <div className="contest-2027 min-h-screen bg-background text-foreground">
       <Toaster richColors theme="dark" />
       <Header />
       <main>
@@ -117,9 +118,9 @@ function ExamplesButton({
       href={EXAMPLES_URL}
       target="_blank"
       rel="noreferrer noopener"
-      className={`group inline-flex items-center justify-center gap-2 ${sizeCls} rounded-xl font-semibold bg-[oklch(0.13_0.02_260)] text-[oklch(0.85_0.14_85)] border border-[oklch(0.85_0.14_85)]/40 hover:border-[oklch(0.85_0.14_85)] hover:bg-[oklch(0.16_0.025_260)] transition-colors ${className}`}
+      className={`group inline-flex items-center justify-center gap-2 ${sizeCls} rounded-lg font-semibold bg-background text-gold border border-gold/40 hover:border-gold hover:bg-surface transition-colors ${className}`}
     >
-      <span>Примеры идей</span>
+      <span>Результаты</span>
       <ExternalLink className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" />
     </a>
   );
@@ -138,14 +139,14 @@ function Header() {
         <a
           href={anchorHref("about")}
           onClick={(e) => onAnchorClick(e, "about")}
-          className="flex items-center gap-2 group"
-          aria-label="Конкурс аналитиков 2026"
+          className="flex min-w-0 items-center gap-2 group"
+          aria-label="Конкурс аналитиков 2027"
         >
-          <span className="grid place-items-center w-9 h-9 rounded-lg bg-gradient-primary shadow-glow">
+          <span className="grid shrink-0 place-items-center w-9 h-9 rounded-lg bg-gradient-primary shadow-glow">
             <Crown className="h-5 w-5 text-primary-foreground" />
           </span>
-          <span className="font-display font-bold tracking-tight text-base sm:text-lg">
-            Конкурс аналитиков <span className="text-gradient-primary">2026</span>
+          <span className="font-display font-bold text-sm sm:text-lg leading-snug">
+            Конкурс аналитиков <span className="text-gradient-primary">2027</span>
           </span>
         </a>
 
@@ -233,22 +234,16 @@ function Hero() {
             <span className="absolute inline-flex h-full w-full rounded-full bg-accent-cyan opacity-75 animate-pulse-dot" />
             <span className="relative inline-flex rounded-full h-2 w-2 bg-accent-cyan" />
           </span>
-          Регистрация открыта · Старт — май 2026
+          Регистрация открыта. Старт — ноябрь 2026
         </div>
 
-        <h1
-          className="mt-6 mx-auto max-w-4xl font-display font-extrabold leading-[1.05] tracking-tight text-[2rem] sm:text-6xl lg:text-7xl animate-slide-up"
-          style={{ animationDelay: "60ms" }}
-        >
-          Сделаем <span className="text-gradient-primary">финансовую аналитику</span>{" "}
-          великой снова
-        </h1>
+        <ScrambleHeading />
 
         <p
           className="mt-5 mx-auto max-w-2xl text-base sm:text-xl text-muted-foreground animate-slide-up"
           style={{ animationDelay: "120ms" }}
         >
-          Открытый конкурс аналитики по российскому фондовому рынку
+          Открытый конкурс аналитики по фьючерсам российского рынка
         </p>
 
         <div
@@ -296,40 +291,48 @@ function Hero() {
 /* ---------- AWARDS ---------- */
 
 function Awards() {
+  const [awardDate, setAwardDate] = useState("1 января 2027 года");
+  useEffect(() => {
+    const refresh = () => setAwardDate(formatContest2027AwardDate());
+    refresh();
+    const timer = setInterval(refresh, 30_000);
+    document.addEventListener("visibilitychange", refresh);
+    return () => { clearInterval(timer); document.removeEventListener("visibilitychange", refresh); };
+  }, []);
+  const money = (value: number) => `${new Intl.NumberFormat("ru-RU").format(value)} ₽`;
   return (
     <section id="awards" className="relative py-12 sm:py-16 scroll-mt-24">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center">
         <SectionEyebrow icon={<Trophy className="h-3.5 w-3.5" />}>Награды</SectionEyebrow>
         <h2 className="mt-3 font-display font-bold text-3xl sm:text-5xl">Призовой фонд</h2>
 
-        <div className="mt-10 rounded-3xl border border-border bg-surface p-6 sm:p-10 shadow-elegant overflow-hidden relative text-left">
-          <div className="absolute -top-24 -right-24 h-72 w-72 rounded-full bg-gradient-gold opacity-20 blur-3xl" />
+        <div className="mt-10 py-6 sm:py-10 overflow-hidden relative text-left">
           <div className="relative grid lg:grid-cols-2 gap-4 lg:gap-8 items-center">
             <div className="text-center lg:text-left">
-              <div className="mt-2 font-display font-extrabold tracking-tight text-gradient-gold leading-none whitespace-nowrap text-[clamp(2rem,11vw,5rem)] lg:text-[clamp(2rem,5.2vw,5rem)]">
-                5&nbsp;400&nbsp;000&nbsp;₽
+              <div className="contest-fund-amount mt-2 font-display font-extrabold text-gradient-gold leading-none whitespace-nowrap">
+                {money(CONTEST_2027.fund)}
               </div>
               <div className="mt-3 text-sm sm:text-base text-muted-foreground">
-                Распределяем среди лучших аналитиков
+                Авторам лучших идей
               </div>
             </div>
 
-            <div className="rounded-2xl border border-gold/20 bg-background/30 px-5 py-5 sm:px-6 sm:py-6">
+            <div className="border-l-2 border-gold/30 px-5 py-5 sm:px-6 sm:py-6">
               <div className="flex items-center justify-center gap-3 sm:gap-4">
                 <div className="text-center">
-                  <div className="font-display font-bold leading-none text-gradient-gold text-[clamp(2rem,5vw,3rem)]">
-                    6
+                  <div className="font-display font-bold leading-none text-gradient-gold text-4xl sm:text-5xl">
+                    {CONTEST_2027.months}
                   </div>
                   <div className="mt-1.5 text-[10px] sm:text-xs font-medium uppercase tracking-[0.2em] text-muted-foreground">
                     месяцев
                   </div>
                 </div>
-                <div className="font-display font-light text-gold/60 text-[clamp(1.25rem,3vw,1.75rem)] leading-none">
+                <div className="font-display font-light text-gold/60 text-2xl leading-none">
                   ×
                 </div>
                 <div className="text-center">
-                  <div className="font-display font-bold leading-none text-gradient-gold text-[clamp(1.5rem,4vw,2.25rem)] whitespace-nowrap">
-                    900&nbsp;000&nbsp;₽
+                  <div className="font-display font-bold leading-none text-gradient-gold text-2xl sm:text-4xl whitespace-nowrap">
+                    {money(CONTEST_2027.monthlyFund)}
                   </div>
                   <div className="mt-1.5 text-[10px] sm:text-xs font-medium uppercase tracking-[0.2em] text-muted-foreground">
                     каждый месяц
@@ -344,37 +347,24 @@ function Awards() {
         <div className="mt-14 text-center">
           <h3 className="font-display font-bold text-2xl sm:text-3xl">Награды и признание</h3>
           <p className="mt-3 mx-auto max-w-2xl text-muted-foreground">
-            Каждый месяц определяем самые доходные инвест-идеи и награждаем
-            авторов.
+            Каждый месяц определяем самые доходные инвест-идеи по фьючерсам
           </p>
 
-          <div className="mt-8 grid md:grid-cols-3 gap-5 text-left">
-            <NominationCard
-              tier="gold"
-              title="Лучшая идея по акциям"
-              prize="500 000 ₽"
-            />
-            <NominationCard
-              tier="primary"
-              title="Лучшая идея на рынке коллективных инвестиций"
-              prize="350 000 ₽"
-            />
-            <NominationCard
-              tier="bronze"
-              title="Лучшая идея на внебиржевом рынке"
-              prize="50 000 ₽"
-            />
+          <div className="mt-10 grid md:grid-cols-3 gap-5 text-left">
+            {CONTEST_2027.prizes.map((prize, index) => (
+              <NominationCard key={index} rank={index + 1} prize={money(prize)} />
+            ))}
           </div>
         </div>
 
-        <div className="mt-10 inline-flex items-center gap-3 px-5 py-3 rounded-full border border-border bg-surface/70 backdrop-blur">
+        <div className="mt-10 inline-flex max-w-full items-center gap-3 px-5 py-3 rounded-lg border border-border bg-surface/70 backdrop-blur">
           <span className="relative flex h-2.5 w-2.5">
             <span className="absolute inline-flex h-full w-full rounded-full bg-accent-cyan opacity-75 animate-pulse-dot" />
             <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-accent-cyan" />
           </span>
           <span className="text-sm sm:text-base">
             Ближайшее награждение —{" "}
-            <span className="font-semibold">{formatNextAwardDate()}</span>
+            <span className="font-semibold">{awardDate}</span>
           </span>
         </div>
       </div>
@@ -382,46 +372,18 @@ function Awards() {
   );
 }
 
-function NominationCard({
-  tier,
-  title,
-  prize,
-}: {
-  tier: "gold" | "primary" | "bronze";
-  title: string;
-  prize: string;
-}) {
-  const tierStyle =
-    tier === "gold"
-      ? "from-[oklch(0.85_0.14_85)]/25 to-transparent"
-      : tier === "primary"
-        ? "from-[oklch(0.66_0.16_250)]/25 to-transparent"
-        : "from-[oklch(0.65_0.12_55)]/25 to-transparent";
+function NominationCard({ rank, prize }: { rank: number; prize: string }) {
   return (
-    <div className="group relative rounded-2xl border border-border bg-surface p-6 overflow-hidden transition hover:-translate-y-1 hover:border-foreground/20 hover:shadow-elegant">
-      <div className={`absolute inset-x-0 top-0 h-32 bg-gradient-to-b ${tierStyle} opacity-80`} />
-      <div className="relative">
-        <div className="flex items-center gap-2.5">
-          <Trophy className="h-5 w-5 text-gold" />
-          <Medal className="h-5 w-5 text-silver" />
-          <Award className="h-5 w-5 text-bronze" />
-        </div>
-        <h4 className="mt-5 font-display font-bold text-lg leading-snug min-h-[3.5rem]">{title}</h4>
-        <div className="mt-2 text-xs uppercase tracking-wider text-muted-foreground">
-          ТОП-1
-        </div>
-        <div className="font-display font-extrabold text-3xl text-gradient-gold mt-1">
-          {prize}
-        </div>
-        <p className="mt-2 text-sm text-muted-foreground">
-          Денежный приз и лидерство в номинации
-        </p>
-        <div className="mt-4 h-px w-full bg-border" />
-        <p className="mt-4 text-sm text-muted-foreground">
-          ТОП-2 и ТОП-3: признание и место в рейтинге
-        </p>
+    <article className={`contest-prize contest-prize-${rank}`}>
+      <div className="relative flex items-start justify-between gap-4">
+        <h4 className="contest-prize-top">ТОП-{rank}</h4>
+        <span aria-hidden="true" className="contest-prize-rank">0{rank}</span>
       </div>
-    </div>
+      <div className="relative mt-12 border-t border-border pt-5">
+        <p className="text-xs text-muted-foreground mb-2">{rank}-е место</p>
+        <p className="contest-prize-amount text-foreground">{prize}</p>
+      </div>
+    </article>
   );
 }
 
@@ -964,11 +926,11 @@ function Footer() {
                 <Crown className="h-5 w-5 text-primary-foreground" />
               </span>
               <span className="font-display font-bold text-lg">
-                Конкурс аналитиков <span className="text-gradient-primary">2026</span>
+                Конкурс аналитиков <span className="text-gradient-primary">2027</span>
               </span>
             </div>
             <p className="mt-4 text-sm text-muted-foreground max-w-md">
-              Открытый конкурс аналитики по российскому фондовому рынку.
+              Открытый конкурс аналитики по фьючерсам российского рынка.
               Организатор — Invest-idei.ru при поддержке ПАО Московская Биржа.
             </p>
             <a
