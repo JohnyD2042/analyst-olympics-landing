@@ -44,7 +44,13 @@
   box-shadow: var(--contest-metal-shadow);
   transition: transform .3s;
 }
-.contest-prize-1 { --metal: var(--gold); }
+.contest-2027 {
+  --contest-gold: oklch(0.84 0.17 88);
+  --contest-gold-hi: oklch(0.97 0.1 95);
+  --contest-gold-mid: oklch(0.86 0.18 85);
+  --contest-gold-deep: oklch(0.6 0.14 65);
+}
+.contest-prize-1 { --metal: var(--contest-gold, var(--gold)); }
 .contest-prize-3 { --metal: var(--bronze); }
 .contest-prize-texture { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; mix-blend-mode: soft-light; opacity: .8; z-index: -1; }
 .contest-prize::before {
@@ -81,7 +87,7 @@
   .contest-prize { height: 210px; }
 }
 /* Fan of prize cards */
-.prize-fan-wrap { display: flex; justify-content: center; padding: 48px 0 64px; overflow: hidden; }
+.prize-fan-wrap { display: flex; justify-content: center; padding: 72px 0 64px; overflow: hidden; }
 .prize-fan { position: relative; width: 230px; height: 300px; text-align: left; --spread: 175px; }
 .prize-fan .prize-fan-card {
   position: absolute; inset: 0; height: auto; cursor: pointer;
@@ -130,4 +136,18 @@
   .contest-prize, .contest-prize::after { transition: none; }
   .contest-2027 .animate-slide-up, .contest-2027 .animate-pulse-dot { animation: none; }
   .contest-prize:hover { transform: none; }
+}
+
+/* First place stands out: bigger card, larger engraving, bright embossed gold cup */
+.prize-fan .contest-prize-1 { inset: -18px -14px 0; box-shadow: var(--contest-metal-shadow), 0 0 60px -10px color-mix(in oklch, var(--contest-gold) 70%, transparent); }
+.prize-fan .contest-prize-1 .contest-prize-place { font-size: 19px; }
+.prize-fan .contest-prize-1 .contest-prize-amount { font-size: 36px; }
+.prize-fan .contest-prize-1 .prize-fan-trophy { width: 92px; height: 104px; filter: drop-shadow(0 2px 2px color-mix(in srgb, var(--contest-metal-ink) 45%, transparent)) drop-shadow(0 -1px 0 var(--contest-gold-hi)); }
+.prize-fan-trophy { height: 72px; }
+@media (max-width: 639px) {
+  .prize-fan .contest-prize-1 { inset: -12px -8px 0; }
+  .prize-fan .contest-prize-1 .contest-prize-place { font-size: 12px; }
+  .prize-fan .contest-prize-1 .contest-prize-amount { font-size: 19px; }
+  .prize-fan .contest-prize-1 .prize-fan-trophy { width: 54px; height: 60px; }
+  .prize-fan-trophy { height: 42px; }
 }

@@ -1,5 +1,4 @@
 import { useEffect, useRef, useState } from "react";
-import { Trophy } from "lucide-react";
 import metalTexture from "@/assets/award-brushed-metal.jpg";
 
 type Prize = { rank: number; amount: string };
@@ -60,7 +59,7 @@ export function PrizeFan({ prizes }: { prizes: Prize[] }) {
               <img src={metalTexture} alt="" aria-hidden="true" loading="lazy" width={1024} height={1024} className="contest-prize-texture" />
               <div className="contest-prize-content">
                 <h4 className="contest-prize-place">{p.rank}-е место</h4>
-                <Trophy className="prize-fan-trophy" aria-hidden="true" strokeWidth={1.6} />
+                <CupIcon rank={p.rank} />
                 <p className="contest-prize-amount">{p.amount}</p>
               </div>
             </article>
@@ -68,5 +67,40 @@ export function PrizeFan({ prizes }: { prizes: Prize[] }) {
         })}
       </div>
     </div>
+  );
+}
+
+/** Classic championship cup: bowl with rim, side handles, knotted stem, two-tier plinth with plaque. */
+function CupIcon({ rank }: { rank: number }) {
+  const id = `cup-grad-${rank}`;
+  const fill = rank === 1 ? `url(#${id})` : "currentColor";
+  return (
+    <svg className="prize-fan-trophy" viewBox="0 0 64 72" aria-hidden="true">
+      <defs>
+        <linearGradient id={id} x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0" stopColor="var(--contest-gold-hi)" />
+          <stop offset=".45" stopColor="var(--contest-gold-mid)" />
+          <stop offset="1" stopColor="var(--contest-gold-deep)" />
+        </linearGradient>
+      </defs>
+      <g fill={fill}>
+        {/* handles */}
+        <path d="M14 10H6.5C5 10 4 11 4 12.6c0 7.4 5 13.6 12.4 15l.9-4C12 22.4 8.6 18.4 8.2 14H14z" />
+        <path d="M50 10h7.5c1.5 0 2.5 1 2.5 2.6 0 7.4-5 13.6-12.4 15l-.9-4c5.3-1.2 8.7-5.2 9.1-9.6H50z" />
+        {/* rim + bowl */}
+        <rect x="11" y="4" width="42" height="4" rx="1.2" />
+        <path d="M13 9h38v7c0 11-7.6 19.6-19 20.6C20.6 35.6 13 27 13 16z" />
+        {/* stem with knot */}
+        <path d="M28.5 36.5h7v4h-7z" />
+        <ellipse cx="32" cy="42.5" rx="6" ry="2.4" />
+        <path d="M29 44.5h6l1.6 7h-9.2z" />
+        {/* plinth */}
+        <rect x="21" y="52" width="22" height="3.2" rx="1" />
+        <path d="M18 56h28l2 12H16z" />
+      </g>
+      {/* engraved details */}
+      <path d="M19 12v4c0 7 3.6 12.6 9 15" fill="none" stroke="var(--contest-metal-light)" strokeOpacity=".45" strokeWidth="1.6" strokeLinecap="round" />
+      <rect x="24" y="59.5" width="16" height="5" rx=".8" fill="none" stroke="var(--contest-metal-light)" strokeOpacity=".4" strokeWidth="1" />
+    </svg>
   );
 }
