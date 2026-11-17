@@ -52,7 +52,7 @@ export function ScrambleHeading() {
   let index = 0;
   const text = `${BASE} ${CONTEST_2027.headlineEndings[endingIndex]}`;
   return (
-    <h1 className="contest-scramble mt-6 mx-auto max-w-5xl font-extrabold">
+    <h1 className="contest-scramble mt-6 mx-auto max-w-5xl font-display font-extrabold tracking-tight">
       <span className="sr-only">{text}</span>
       <span aria-hidden="true">
         {text.split(" ").map((word, wordIndex, words) => {

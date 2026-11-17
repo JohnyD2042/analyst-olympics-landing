@@ -7,14 +7,12 @@
 .contest-2027 main > section { padding-top: 32px; padding-bottom: 32px; }
 .contest-2027 main > #about { padding-top: 112px; padding-bottom: 28px; }
 .contest-2027 .contest-scramble {
-  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
-  font-size: 28px;
-  line-height: 1.22;
-  letter-spacing: 0;
-  min-height: 103px;
+  font-size: 32px;
+  line-height: 1.05;
+  min-height: 0;
 }
 .contest-scramble-word { display: inline-block; white-space: nowrap; }
-.contest-scramble-letter { display: inline-block; width: .62em; }
+.contest-scramble-letter { display: inline; }
 .contest-ending-start::before { content: ""; display: block; }
 .contest-caret {
   display: inline-block;
@@ -78,11 +76,11 @@
 @media (min-width: 640px) {
   .contest-2027 main > section { padding-top: 40px; padding-bottom: 40px; }
   .contest-2027 main > #about { padding-top: 128px; padding-bottom: 36px; }
-  .contest-2027 .contest-scramble { font-size: 48px; min-height: 234px; }
+  .contest-2027 .contest-scramble { font-size: 60px; min-height: 0; }
   .contest-2027 .contest-fund-amount { font-size: 64px; }
 }
 @media (min-width: 1024px) {
-  .contest-2027 .contest-scramble { font-size: 60px; min-height: 220px; }
+  .contest-2027 .contest-scramble { font-size: 72px; min-height: 0; }
   .contest-2027 .contest-fund-amount { font-size: 64px; }
   .contest-prize { height: 210px; }
 }
