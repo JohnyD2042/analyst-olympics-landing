@@ -6,6 +6,7 @@ import { ScrambleHeading } from "@/components/scramble-heading";
 import contestCss from "@/styles/contest-2027.css?url";
 import { isValidContact } from "@/lib/contact";
 import { PrizeFan } from "@/components/prize-fan";
+import { BenefitLightCards } from "@/components/benefit-lights";
 import {
   Menu,
   X,
@@ -499,19 +500,16 @@ function Participation() {
   ];
   const benefits = [
     {
-      icon: <Star className="h-5 w-5" />,
-      title: "Честный знак качества",
-      text: "Независимая оценка вашей аналитики и публичное подтверждение качества инвестиционных идей.",
+      title: "Знак качества аналитики",
+      text: "Независимая оценка вашей аналитики и регулярное попадание в рейтинг лучших аналитиков рынка.",
     },
     {
-      icon: <Megaphone className="h-5 w-5" />,
       title: "Продвижение бренда",
       text: "Идеи автоматически транслируются на сотни тысяч инвесторов: на сайте Invest-idei.ru, ресурсах Мосбиржи, приложениях ведущих брокеров с вашим именем и ссылкой.",
     },
     {
-      icon: <Medal className="h-5 w-5" />,
-      title: "Награды и признание",
-      text: "Денежные призы, статус победителя и регулярное попадание в рейтинг лучших аналитиков рынка.",
+      title: "Награды",
+      text: "Денежные призы и статус победителя",
     },
   ];
   return (
@@ -578,23 +576,7 @@ function Participation() {
 
         <div className="mt-16 text-center">
           <h3 className="font-display font-bold text-2xl sm:text-3xl">Что получает участник</h3>
-          <div className="mt-8 grid md:grid-cols-3 gap-5 text-left">
-            {benefits.map((b) => (
-              <div
-                key={b.title}
-                className="relative rounded-2xl border border-border bg-gradient-to-b from-surface-2 to-surface p-6 overflow-hidden"
-              >
-                <div className="absolute -top-12 -right-12 h-40 w-40 rounded-full bg-gradient-primary opacity-15 blur-2xl" />
-                <div className="relative">
-                  <div className="grid place-items-center w-11 h-11 rounded-lg bg-gradient-primary text-primary-foreground shadow-glow">
-                    {b.icon}
-                  </div>
-                  <h4 className="mt-5 font-display font-semibold text-lg">{b.title}</h4>
-                  <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{b.text}</p>
-                </div>
-              </div>
-            ))}
-          </div>
+          <BenefitLightCards benefits={benefits} />
         </div>
 
         <div className="mt-12 flex justify-center">
