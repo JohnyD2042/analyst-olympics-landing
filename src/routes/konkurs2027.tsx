@@ -62,7 +62,6 @@ const NAV = [
 ] as const;
 
 const EXAMPLES_URL = "https://konkurs.invest-idei.ru/";
-const MOEX_URL = "https://www.moex.com/n100378";
 
 function scrollToId(id: string) {
   const el = document.getElementById(id);
@@ -943,17 +942,6 @@ function Footer() {
               Документы и ресурсы
             </div>
             <ul className="mt-4 space-y-2.5 text-sm">
-              <li>
-                <a
-                  href={MOEX_URL}
-                  target="_blank"
-                  rel="noreferrer noopener"
-                  className="text-foreground/80 hover:text-foreground transition-colors inline-flex items-center gap-1.5"
-                >
-                  Информация на сайте Мосбиржи
-                  <ExternalLink className="h-3 w-3" />
-                </a>
-              </li>
               <li>
                 <a
                   href="https://invest-idei.ru/uploads/6a1502b95023c.pdf"
