@@ -339,7 +339,7 @@ function Awards() {
                     {CONTEST_2027.months}
                   </div>
                   <div className="mt-1.5 text-[10px] sm:text-xs font-medium uppercase tracking-[0.2em] text-muted-foreground">
-                    месяцев
+                    этапов
                   </div>
                 </div>
                 <div className="font-display font-light text-gold/60 text-2xl leading-none">
@@ -350,7 +350,7 @@ function Awards() {
                     {money(CONTEST_2027.monthlyFund)}
                   </div>
                   <div className="mt-1.5 text-[10px] sm:text-xs font-medium uppercase tracking-[0.2em] text-muted-foreground">
-                    каждый месяц
+                    каждый этап
                   </div>
                 </div>
               </div>
