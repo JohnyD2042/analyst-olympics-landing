@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as Konkurs2027RouteImport } from './routes/konkurs2027'
+import { Route as ApiPublicNotifyTelegramRouteImport } from './routes/api/public/notify-telegram'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -22,31 +23,40 @@ const Konkurs2027Route = Konkurs2027RouteImport.update({
   path: '/konkurs2027',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ApiPublicNotifyTelegramRoute = ApiPublicNotifyTelegramRouteImport.update({
+  id: '/api/public/notify-telegram',
+  path: '/api/public/notify-telegram',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/konkurs2027': typeof Konkurs2027Route
+  '/api/public/notify-telegram': typeof ApiPublicNotifyTelegramRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/konkurs2027': typeof Konkurs2027Route
+  '/api/public/notify-telegram': typeof ApiPublicNotifyTelegramRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/konkurs2027': typeof Konkurs2027Route
+  '/api/public/notify-telegram': typeof ApiPublicNotifyTelegramRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/konkurs2027'
+  fullPaths: '/' | '/konkurs2027' | '/api/public/notify-telegram'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/konkurs2027'
-  id: '__root__' | '/' | '/konkurs2027'
+  to: '/' | '/konkurs2027' | '/api/public/notify-telegram'
+  id: '__root__' | '/' | '/konkurs2027' | '/api/public/notify-telegram'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   Konkurs2027Route: typeof Konkurs2027Route
+  ApiPublicNotifyTelegramRoute: typeof ApiPublicNotifyTelegramRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -65,12 +75,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof Konkurs2027RouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/api/public/notify-telegram': {
+      id: '/api/public/notify-telegram'
+      path: '/api/public/notify-telegram'
+      fullPath: '/api/public/notify-telegram'
+      preLoaderRoute: typeof ApiPublicNotifyTelegramRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   Konkurs2027Route: Konkurs2027Route,
+  ApiPublicNotifyTelegramRoute: ApiPublicNotifyTelegramRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
