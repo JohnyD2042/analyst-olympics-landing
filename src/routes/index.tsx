@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
 import { z } from "zod";
 import { formatNextAwardDate } from "@/lib/award-date";
+import { CONTEST_2026, formatContest2026EndDate } from "@/lib/contest-2026";
 import {
   Menu,
   X,
@@ -32,13 +33,13 @@ export const Route = createFileRoute("/")({
       {
         name: "description",
         content:
-          "Открытый конкурс аналитиков по российскому фондовому рынку с призовым фондом 5 400 000 рублей.",
+          `Открытый конкурс аналитиков по российскому фондовому рынку с призовым фондом ${CONTEST_2026.fund.toLocaleString("ru-RU")} рублей.`,
       },
       { property: "og:title", content: "Конкурс аналитиков 2026" },
       {
         property: "og:description",
         content:
-          "Конкурс инвестиционных идей по российскому фондовому рынку. Призовой фонд — 5 400 000 рублей.",
+          `Конкурс инвестиционных идей по российскому фондовому рынку. Призовой фонд — ${CONTEST_2026.fund.toLocaleString("ru-RU")} рублей.`,
       },
       { property: "og:type", content: "website" },
       { property: "og:url", content: "/" },
@@ -306,7 +307,7 @@ function Awards() {
           <div className="relative grid lg:grid-cols-2 gap-4 lg:gap-8 items-center">
             <div className="text-center lg:text-left">
               <div className="mt-2 font-display font-extrabold tracking-tight text-gradient-gold leading-none whitespace-nowrap text-[clamp(2rem,11vw,5rem)] lg:text-[clamp(2rem,5.2vw,5rem)]">
-                5&nbsp;400&nbsp;000&nbsp;₽
+                {CONTEST_2026.fund.toLocaleString("ru-RU")}&nbsp;₽
               </div>
               <div className="mt-3 text-sm sm:text-base text-muted-foreground">
                 Распределяем среди лучших аналитиков
@@ -317,7 +318,7 @@ function Awards() {
               <div className="flex items-center justify-center gap-3 sm:gap-4">
                 <div className="text-center">
                   <div className="font-display font-bold leading-none text-gradient-gold text-[clamp(2rem,5vw,3rem)]">
-                    6
+                    {CONTEST_2026.months}
                   </div>
                   <div className="mt-1.5 text-[10px] sm:text-xs font-medium uppercase tracking-[0.2em] text-muted-foreground">
                     месяцев
@@ -328,7 +329,7 @@ function Awards() {
                 </div>
                 <div className="text-center">
                   <div className="font-display font-bold leading-none text-gradient-gold text-[clamp(1.5rem,4vw,2.25rem)] whitespace-nowrap">
-                    900&nbsp;000&nbsp;₽
+                    {CONTEST_2026.monthlyFund.toLocaleString("ru-RU")}&nbsp;₽
                   </div>
                   <div className="mt-1.5 text-[10px] sm:text-xs font-medium uppercase tracking-[0.2em] text-muted-foreground">
                     каждый месяц
@@ -661,7 +662,7 @@ const FAQ_ITEMS = [
   },
   {
     q: "Сколько идет конкурс?",
-    a: "Идеи на конкурс можно присылать с 25 мая 2026 года по 30 ноября 2026 года. Победителей месяца объявляем первого числа каждого месяца с июля по декабрь 2026.",
+    a: `Идеи на конкурс можно присылать с 25 мая 2026 года по ${formatContest2026EndDate()}. Победителей месяца объявляем первого числа каждого месяца с июля по декабрь 2026.`,
   },
   {
     q: "Кто может принять участие?",

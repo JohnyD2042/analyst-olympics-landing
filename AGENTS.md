@@ -1,4 +1,5 @@
 # Architecture
+- Keep the home contest's fund, duration and closing date in its own tested browser-safe season module so changes do not affect the copied season.
 - Keep Telegram notifications in a dynamically imported server-only handler, validating the database webhook secret before sending; accept the same contact formats as the application form and never log token-bearing fetch exceptions.
 - Keep `/` and `/konkurs2027` in separate content route files so future design changes to the copied page do not alter the original.
 - Restore historical presentation code selectively; preserve current deployment and generated Cloud configuration to avoid infrastructure regressions.
