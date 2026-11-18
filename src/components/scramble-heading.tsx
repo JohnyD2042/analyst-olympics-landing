@@ -21,6 +21,10 @@ export function ScrambleHeading() {
       const start = performance.now();
       const endingStart = BASE.length + 1;
       const deadlines = Array.from(text, (_, index) => index < endingStart ? 0 : 120 + (index - endingStart) * 45 + Math.random() * 160);
+      setFrame({
+        settled: deadlines.map((end) => end === 0),
+        letters: Array.from(text, (letter, index) => index < endingStart || letter === " " ? letter : GLYPHS[Math.floor(Math.random() * GLYPHS.length)]),
+      });
       timer = setInterval(() => {
         const elapsed = performance.now() - start;
         const settled = deadlines.map((end) => elapsed >= end);
@@ -48,7 +52,7 @@ export function ScrambleHeading() {
       clearInterval(repeat);
       motion.removeEventListener("change", onMotionChange);
     };
-  }, []);
+  }, [CONTEST_2027.headlineEndings, CONTEST_2027.scrambleInterval]);
 
   let index = 0;
   const text = `${BASE} ${CONTEST_2027.headlineEndings[endingIndex]}`;
