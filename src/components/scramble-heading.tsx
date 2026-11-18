@@ -60,7 +60,7 @@ export function ScrambleHeading() {
           index += word.length + 1;
           return (
             <span key={word}>
-              <span className="contest-scramble-word text-gradient-primary">
+              <span className={`contest-scramble-word ${wordIndex === 0 ? "text-foreground" : wordIndex === 1 ? "text-gradient-primary" : "text-primary"}`}>
                 {Array.from(word, (letter, offset) => (
                   <span key={offset} className={`contest-scramble-letter ${frame && !frame.settled[start + offset] ? "text-muted-foreground" : "text-inherit"}`}>
                     {frame?.letters[start + offset] ?? letter}

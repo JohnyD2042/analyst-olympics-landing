@@ -250,7 +250,7 @@ function Hero() {
           className="mt-5 mx-auto max-w-2xl text-base sm:text-xl text-muted-foreground animate-slide-up"
           style={{ animationDelay: "120ms" }}
         >
-          Срочно ищем авторов лучших идей{" "}
+          Конкурс инвест-идей{" "}
           <span className="contest-marker">
             по срочному рынку
             <svg className="contest-marker-oval" viewBox="0 0 200 60" preserveAspectRatio="none" aria-hidden="true">
