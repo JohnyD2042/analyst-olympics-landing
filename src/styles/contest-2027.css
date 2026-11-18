@@ -233,6 +233,10 @@
   transition: border-color .5s; padding: 132px 20px 30px;
 }
 .contest-2027 .benefit-light[data-on="true"] { border-color: color-mix(in srgb, var(--light) 50%, var(--border)); }
+.contest-2027 .benefit-card-toggle { position: absolute; inset: 0; z-index: 1; width: 100%; height: 100%; border-radius: inherit; cursor: pointer; }
+.contest-2027 .benefit-card-toggle:hover { background: transparent; }
+.contest-2027 .benefit-lamp, .contest-2027 .benefit-light-copy, .contest-2027 .benefit-light-index, .contest-2027 .benefit-light-status { z-index: 2; pointer-events: none; }
+.contest-2027 .benefit-cord-grab { pointer-events: auto; }
 .contest-2027 .benefit-light-flood {
   position: absolute; inset: 0; z-index: -1; pointer-events: none;
   background: linear-gradient(180deg, color-mix(in srgb, var(--light) 24%, var(--surface)) 0%, color-mix(in srgb, var(--light) 7%, var(--surface)) 70%);

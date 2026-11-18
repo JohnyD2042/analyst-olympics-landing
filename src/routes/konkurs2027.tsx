@@ -778,19 +778,6 @@ function ApplyForm() {
 
   return (
     <form ref={formRef} onSubmit={onSubmit} className="space-y-5" noValidate>
-      <Field id="name" label="Ваше имя / Бренд" error={errors.name}>
-        <input
-          id="name"
-          type="text"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-          placeholder={status === "Частный аналитик" ? "Финансовый гений" : "Фьючерс-банк"}
-          className="w-full h-12 px-4 rounded-lg bg-background border border-border text-foreground placeholder:text-muted-foreground/60 focus:outline-none focus:ring-2 focus:ring-ring focus:border-transparent transition"
-          aria-invalid={!!errors.name}
-          required
-        />
-      </Field>
-
       <Field id="status" label="Статус" error={errors.status}>
         <div
           role="radiogroup"
@@ -817,6 +804,19 @@ function ApplyForm() {
             );
           })}
         </div>
+      </Field>
+
+      <Field id="name" label="Ваше имя / Бренд" error={errors.name}>
+        <input
+          id="name"
+          type="text"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+          placeholder={status === "Частный аналитик" ? "Финансовый гений" : "Фьючерс-банк"}
+          className="w-full h-12 px-4 rounded-lg bg-background border border-border text-foreground placeholder:text-muted-foreground/60 focus:outline-none focus:ring-2 focus:ring-ring focus:border-transparent transition"
+          aria-invalid={!!errors.name}
+          required
+        />
       </Field>
 
       <Field

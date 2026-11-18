@@ -62,6 +62,9 @@ function CordCard({ benefit, index, on, hint, onToggle }: {
 
   return (
     <article className={`benefit-light benefit-light-${index + 1}`} data-on={on ? "true" : "false"} aria-label={benefit.title}>
+      <Button type="button" variant="ghost" className="benefit-card-toggle" role="switch"
+        aria-checked={on} aria-controls={id} aria-label={`${on ? "Выключить" : "Включить"} свет: ${benefit.title}`}
+        onClick={() => { onToggle(); settle(); }} />
       <div className="benefit-light-flood" aria-hidden="true" />
       <span className="benefit-light-index font-display" aria-hidden="true">0{index + 1}</span>
       <div className="benefit-lamp" ref={lamp} data-hint={showHint ? "true" : undefined}>
@@ -77,10 +80,8 @@ function CordCard({ benefit, index, on, hint, onToggle }: {
           type="button"
           variant="ghost"
           className="benefit-cord-grab"
-          role="switch"
-          aria-checked={on}
           aria-controls={id}
-          aria-label={`${on ? "Выключить" : "Включить"} свет: ${benefit.title}`}
+          aria-label={`Шнурок: ${benefit.title}`}
           title={`${on ? "Выключить" : "Включить"} свет`}
           onPointerDown={(event) => {
             if (event.button !== 0) return;
