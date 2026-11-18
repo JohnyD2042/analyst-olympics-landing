@@ -18,7 +18,7 @@ export default defineConfig({
       allowedHosts: true,
     },
     preview: {
-      allowedHosts: ['konkurs2026.invest-idei.ru', 'frontend-web'],
+      allowedHosts: ['konkurs2026.invest-idei.ru', 'srochka-i-tochka.invest-idei.ru', 'frontend-web'],
     },
   },
 });
