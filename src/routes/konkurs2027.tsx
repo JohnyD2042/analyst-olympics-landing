@@ -944,7 +944,7 @@ function Footer() {
             <ul className="mt-4 space-y-2.5 text-sm">
               <li>
                 <a
-                  href="https://invest-idei.ru/uploads/6a1502b95023c.pdf"
+                  href="https://invest-idei.ru/uploads/6afdf10e48d7e.pdf"
                   target="_blank"
                   rel="noreferrer noopener"
                   className="text-foreground/80 hover:text-foreground transition-colors inline-flex items-center gap-1.5"
