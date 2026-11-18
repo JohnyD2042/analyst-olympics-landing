@@ -328,7 +328,7 @@ function Awards() {
                 {money(CONTEST_2027.fund)}
               </div>
               <div className="mt-3 text-sm sm:text-base text-muted-foreground">
-                Авторам лучших идей
+                Аналитикам, которые видят возможности рынка и умеют о них рассказывать
               </div>
             </div>
 
@@ -367,7 +367,7 @@ function Awards() {
               <svg className="contest-marker-oval" viewBox="0 0 200 60" preserveAspectRatio="none" aria-hidden="true">
                 <path pathLength="1" d="M108 6C60 3 12 10 6 30c-5 18 40 26 96 25 52-1 94-9 92-27C192 12 150 4 96 6 70 7 44 11 30 16" />
               </svg>
-            </span>{" "}определяем лучшие инвест-идеи по фьючерсам
+            </span>{" "}награждаем авторов идей, показавших максимальную доходность
           </p>
 
           <PrizeFan prizes={CONTEST_2027.prizes.map((prize, index) => ({ rank: index + 1, amount: money(prize) }))} />
@@ -410,7 +410,7 @@ function Format() {
     {
       n: "4",
      title: "Лучшие получают награды",
-     text: "В конце каждого месяца авторы лучших идей получают статус чемпиона и денежный приз.",
+     text: "Каждый месяц авторы 3 идей, которые сработали и показали лучшие результаты получают награду",
     },
   ];
   return (
