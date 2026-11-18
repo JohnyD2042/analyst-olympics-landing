@@ -250,14 +250,13 @@ function Hero() {
           className="mt-5 mx-auto max-w-2xl text-base sm:text-xl text-muted-foreground animate-slide-up"
           style={{ animationDelay: "120ms" }}
         >
-          Открытый конкурс аналитики{" "}
+          Срочно ищем авторов лучших идей{" "}
           <span className="contest-marker">
-            по фьючерсам
+            по срочному рынку
             <svg className="contest-marker-oval" viewBox="0 0 200 60" preserveAspectRatio="none" aria-hidden="true">
               <path pathLength="1" d="M108 6C60 3 12 10 6 30c-5 18 40 26 96 25 52-1 94-9 92-27C192 12 150 4 96 6 70 7 44 11 30 16" />
             </svg>
-          </span>{" "}
-          российского рынка
+          </span>
         </p>
 
         <div
@@ -328,7 +327,7 @@ function Awards() {
                 {money(CONTEST_2027.fund)}
               </div>
               <div className="mt-3 text-sm sm:text-base text-muted-foreground">
-                Аналитикам, которые видят возможности рынка и умеют о них рассказывать
+                Предлагайте идеи, соревнуйтесь за лучшую доходность и получайте призы!
               </div>
             </div>
 

@@ -1,29 +1,24 @@
 import { useEffect, useState } from "react";
 import { CONTEST_2027 } from "@/lib/contest-2027";
 
-const BASE = "Сделаем финансовую аналитику";
+const TEXT = "СРОЧКА И ТОЧКА";
 const GLYPHS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789#%&*+=/<>";
 
 export function ScrambleHeading() {
-  const [endingIndex, setEndingIndex] = useState(0);
   const [frame, setFrame] = useState<{ letters: string[]; settled: boolean[] } | null>(null);
 
   useEffect(() => {
     const motion = window.matchMedia("(prefers-reduced-motion: reduce)");
-    let currentEnding = 0;
     let timer: ReturnType<typeof setInterval> | undefined;
-    const decode = (advance = false) => {
+    const decode = () => {
       if (motion.matches || document.hidden) return;
-      if (advance) currentEnding = (currentEnding + 1) % CONTEST_2027.headlineEndings.length;
-      setEndingIndex(currentEnding);
-      const text = `${BASE} ${CONTEST_2027.headlineEndings[currentEnding]}`;
+      const text = TEXT;
       if (timer) clearInterval(timer);
       const start = performance.now();
-      const endingStart = BASE.length + 1;
-      const deadlines = Array.from(text, (_, index) => index < endingStart ? 0 : 120 + (index - endingStart) * 45 + Math.random() * 160);
+      const deadlines = Array.from(text, (letter, index) => letter === " " ? 0 : 120 + index * 45 + Math.random() * 160);
       setFrame({
         settled: deadlines.map((end) => end === 0),
-        letters: Array.from(text, (letter, index) => index < endingStart || letter === " " ? letter : GLYPHS[Math.floor(Math.random() * GLYPHS.length)]),
+        letters: Array.from(text, (letter) => letter === " " ? letter : GLYPHS[Math.floor(Math.random() * GLYPHS.length)]),
       });
       timer = setInterval(() => {
         const elapsed = performance.now() - start;
@@ -39,7 +34,7 @@ export function ScrambleHeading() {
       }, 55);
     };
     decode();
-    const repeat = setInterval(() => decode(true), CONTEST_2027.scrambleInterval);
+    const repeat = setInterval(decode, CONTEST_2027.scrambleInterval);
     const onMotionChange = () => {
       if (motion.matches) {
         clearInterval(timer);
@@ -52,22 +47,22 @@ export function ScrambleHeading() {
       clearInterval(repeat);
       motion.removeEventListener("change", onMotionChange);
     };
-  }, [CONTEST_2027.headlineEndings, CONTEST_2027.scrambleInterval]);
+  }, []);
 
   let index = 0;
-  const text = `${BASE} ${CONTEST_2027.headlineEndings[endingIndex]}`;
+  const text = TEXT;
   return (
-    <h1 className="contest-scramble mt-6 mx-auto max-w-5xl font-display font-extrabold tracking-tight">
+    <h1 className="contest-scramble mt-6 mx-auto max-w-5xl font-display font-extrabold tracking-normal">
       <span className="sr-only">{text}</span>
       <span aria-hidden="true">
         {text.split(" ").map((word, wordIndex, words) => {
           const start = index;
           index += word.length + 1;
           return (
-            <span key={word} className={wordIndex === 3 ? "contest-ending-start" : undefined}>
-              <span className={`contest-scramble-word ${wordIndex === 1 || wordIndex === 2 ? "text-gradient-primary" : ""}`}>
+            <span key={word}>
+              <span className="contest-scramble-word text-gradient-primary">
                 {Array.from(word, (letter, offset) => (
-                  <span key={offset} className={`contest-scramble-letter ${frame && !frame.settled[start + offset] ? "text-muted-foreground" : wordIndex === 1 || wordIndex === 2 ? "text-inherit" : "text-foreground"}`}>
+                  <span key={offset} className={`contest-scramble-letter ${frame && !frame.settled[start + offset] ? "text-muted-foreground" : "text-inherit"}`}>
                     {frame?.letters[start + offset] ?? letter}
                   </span>
                 ))}
